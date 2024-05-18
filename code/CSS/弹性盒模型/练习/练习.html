@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font_kkdljnm2fp/iconfont.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100vw;
+            height: 1800px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .block_top{
+            width: 100%;
+            /* height: 80px; */
+            background-color: #3f454f;
+
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .box_topleft{
+            flex: 1;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .box_topright{
+            flex: 1;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .icon_top{
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 2%;
+            margin-right: 2%;
+            font-size: 35px;
+        }
+        .block_bottom{
+            width: 100%;
+            height: 100px;
+            position: fixed;
+            border-top: 1px solid #d9d9d9;
+            box-sizing: border-box;
+            background-color: white;
+            bottom: 0;
+            display: flex;
+        }
+        .box_bottom{
+            flex: 1;
+            height: 100%;
+        }
+        .icon_bottom{
+            color: #929292;
+            font-size: 44px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .box_01:hover .icon_bottom{
+            color: #00aaee;
+        }
+        .block_01{
+            width: 100%;
+            height: 5%;
+            background-color: #3f454f;
+            display: flex;
+        }
+        .box_01{
+            flex: 1;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .text_01{
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 55px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .block_02{
+            width: 100%;
+            height: 20%;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+        .box_02{
+            width: 25%;
+            height: 33.33%;
+            border: 1px solid #e6e6e6;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box_02 a{
+            text-decoration: none;
+            text-align: center;
+        }
+        .block_poster{
+            width: 100%;
+            height: 10%;
+            background-color: #f5f5f9;
+            display: flex;
+            align-items: center;
+        }
+        .block_poster a{
+            flex: 1;
+            height: 64%;
+            background-image: url(./图层\ 1.png);
+            background-size: cover;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="block_top">
+            <div class="box_topleft">
+                <a href="#" class="iconfont icon-pay icon_top"></a>
+                <a href="#" class="icon_top" style="font-size: 30px;">账单</a>
+            </div>
+            <div class="box_topright">
+                <a href="#" class="iconfont icon-addressbook icon_top"> </a>
+                <a href="#" class="iconfont icon-search icon_top"> </a>
+                <a href="#" class="iconfont icon-add icon_top"> </a>
+            </div>
+        </div>
+        <div class="block_bottom">
+            <div class="box_01">
+                <a href="#" class="iconfont icon-zhifubaozhifu icon_bottom"><span style="font-size: 20px;display: block;">支付宝</span></a>
+            </div>
+            <div class="box_01">
+                <a href="#" class="iconfont icon-koubei icon_bottom"><span style="font-size: 20px;display: block;">口碑</span></a>
+            </div>
+            <div class="box_01">
+                <a href="#" class="iconfont icon-pepole icon_bottom"><span style="font-size: 20px;display: block;">朋友</span></a>
+            </div>
+            <div class="box_01">
+                <a href="#" class="iconfont icon-coin icon_bottom"><span style="font-size: 20px;display: block;">我的</span></a>
+            </div>
+        </div>
+        <div class="block_01">
+            <div class="box_01">
+                <a href="#" class="iconfont icon-scan text_01"><span style="font-size: 18px;display: block;">扫一扫</span></a>
+            </div>
+            <div class="box_01">
+                <a href="#" class="iconfont icon-pay text_01"><span style="font-size: 18px;display: block;">付款</span></a>
+            </div>
+            <div class="box_01">
+                <a href="#" class="iconfont icon-card text_01"><span style="font-size: 18px;display: block;">卡券</span></a>
+            </div>
+            <div class="box_01">
+                <a href="#" class="iconfont icon-personal text_01"><span style="font-size: 18px;display: block;">用户</span></a>
+            </div>
+        </div>
+        <div class="block_02">
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-hongbao" style="color: #f96268;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">红包</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-yuebao" style="color: #f96268;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">余额宝</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-shoujichongzhi" style="color: #2eb3e8;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">手机充值</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-xinyongqiahuankuan" style="color: #ffb359;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">信用卡还款</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhimaxinyong" style="color: #36bc99;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">芝麻信用</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-didichuhang" style="color: #ffb359;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">滴滴出行</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-taopiaopiao" style="color: #f96268;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">淘票票</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+        </div>
+        <div class="block_poster">
+            <a href="#"></a>
+        </div>
+        <div class="block_02">
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+            <div class="box_02">
+                <a href="#" class="iconfont icon-zhuanzhang" style="color: #2eb3e8;font-size: 40px;"><br><span style="color: black;font-size: 14px;display: block;">转账</span></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

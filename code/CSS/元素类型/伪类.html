@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box0{
+            width: 400px;
+            height: 400px;
+            margin: 200px auto;
+            border: 1px solid;
+            border-radius: 10%;
+            text-align: center;
+            line-height: 400px;
+            background-color: #fff;
+            color: #000;
+            overflow: hidden;
+            display: block;
+        }
+        .box1{
+            width: 400px;
+            height: 400px;
+            text-align: center;
+            line-height: 400px;
+            display: none;
+        }
+        /* .box0:hover{
+            display: none;
+        } */
+        .box0:hover .box1{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box0">快过来！
+        <div class="box1">快走开！</div>
+    </div>
+</body>
+</html>

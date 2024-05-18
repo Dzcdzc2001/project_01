@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 227px;
+            height: 150px;
+            border: 1px solid;
+            box-sizing: border-box;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .container img{
+            transition: all;
+            transition-duration: 1s;
+            position: absolute;
+            top: 0;
+        }
+        .container:hover img{
+            top: -150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"><img src="./anli1.png" alt=""></div>
+</body>
+</html>

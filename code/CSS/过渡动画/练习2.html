@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 377px;
+            height: 280px;
+            margin: 100px auto;
+            background-image: url(./box_img2.png);
+
+            overflow: hidden;
+            position: relative;
+
+            
+        }
+        .logo1{
+            position: absolute;
+            left: -80px;
+            top: 100px;
+            transition: all;
+            transition-duration: 1s;
+        }
+        .logo2{
+            position: absolute;
+            right: -37px;
+            top: 122px;
+            transition: all;
+            transition-duration: 1s;
+        }
+        .container:hover .logo1{
+            left: 148px;
+        }
+        .container:hover .logo2{
+            right: 170px;
+        }
+        .mask{
+            width: 377px;
+            height: 280px;
+            background-color: rgba(0, 0, 0, 0);
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all;
+            transition-duration: 1s;
+        }
+        .container:hover .mask{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        .text{
+            width: 107px;
+            height: 40px;
+            text-align: center;
+            color: #28a6e1;
+            font-size: 25px;
+            font-weight: 600;
+            position: absolute;
+            left: 135px;
+            top: -40px;
+
+            transition: all;
+            transition-duration: 1s;
+        }
+        .container:hover .text{
+            top: 20px;
+        }
+        .back{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 1s;
+        }
+        .container:hover .back{
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./box_img2.png" class="back">
+        <div class="mask"></div>
+        
+        
+        <img src="./l_o.png" class="logo1">
+        <img src="./r_f.png" class="logo2">
+        <p class="text">合作愉快</p>
+    </div>
+</body>
+</html>

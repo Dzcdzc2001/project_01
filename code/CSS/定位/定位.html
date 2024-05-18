@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .block{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            /* position: relative; */
+            /* left: 50px; */
+            margin: 50px auto;
+            position: sticky;
+            top: 0;
+        }
+        .mydiv{
+            width: 10px;
+            height: 2000px;
+            border: 5px dotted;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        定位类型
+        1、相对定位：相对自身进行定位，不会脱离文档流 position: relative
+        2、绝对定位：当上级有定位模式时按照就近原则进行定位，否则按照viewport进行定位，并且脱离文档流 position: absolute
+        3、固定定位：一直相对viewport定位 position: fixed
+        4、默认定位：position: static
+        5、粘性定位：当达到判断条件时粘在viewport上，一定要给出判断条件 position: sticky
+        偏移量
+        left top right bottom
+     -->
+     <div class="block"></div>
+     <div class="mydiv"></div>
+</body>
+</html>

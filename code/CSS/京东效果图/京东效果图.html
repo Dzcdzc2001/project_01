@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box; */
+        }
+        .container{
+            width: 1210px;
+        }
+        .block_poster_head{
+           width: 210px;
+           height: 330px;
+           background-image: url(./poster.png);
+           position: relative;
+           float: left;
+        }
+        .block_poster_head_list{
+            width: 210px;
+            height: 92px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: rgba(196, 232, 232,0.3);
+            display: none;
+        }
+        .block_poster_head:hover .block_poster_head_list{
+            display: block;
+        }
+        .block_poster_head_list a{
+            width: 105px;
+            height: 46px;
+            padding-left: 10px;
+            color: #686765;
+            font-size: 14px;
+            text-decoration: none;
+            /* text-align: center; */
+            line-height: 46px;
+            box-sizing: border-box;
+            float: left;
+            display: block;
+        }
+        .block_poster_head_list a:hover{
+            color: #de3b36;
+        }
+        .block_poster_foot{
+            width: 210px;
+            height: 145px;
+            padding-left: 25px;
+            padding-top: 12px;
+            background-color: #edf9f9;
+
+            box-sizing: border-box;
+            float: left;
+        }
+        .block_product_top{
+            width: 200px;
+            height: 237px;
+            position: relative;
+            cursor: pointer;
+            float: left;
+            /* border-right: 1px solid #ededed; */
+            /* box-sizing: border-box; */ 
+        }
+        .block_product_bottom{
+            width: 200px;
+            height: 237px;
+            position: relative;
+            cursor: pointer;
+            float: right;
+        }
+        .block_product_top p{
+            margin-left: 18px;
+            font-size: 12px;
+            color: #696969;
+        }
+        .block_product_bottom p{
+            margin-left: 18px;
+            font-size: 12px;
+            color: #696969;
+        }
+        .block_product_top .box_price{
+            position: absolute;
+            bottom: 12px;
+            color: #de3b36;
+        }
+        .block_product_bottom .box_price{
+            position: absolute;
+            bottom: 12px;
+            color: #de3b36;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="block_poster_head">
+            <div class="block_poster_head_list">
+                <a href="#"><img src="./icon_1.png" style="vertical-align: middle;"> 运动城</a>
+                <a href="#"><img src="./icon_ 2.png" style="vertical-align: middle;"> 炫酷骑行</a>
+                <a href="#"><img src="./icon_ 3.png" style="vertical-align: middle;"> 运动鞋服</a>
+                <a href="#"><img src="./icon_ 4.png" style="vertical-align: middle;"> 户外鞋服</a>
+            </div>
+        </div>
+
+        <div class="block_product_top"><img src="./product_1.png"><p>乔山家用跑步机</p><p class="box_price">¥8499.00</p></div>
+        <div class="block_product_top"><img src="./product_2.png"><p>家用多功能优步智能跑步机</p><p class="box_price">¥2099.00</p></div>
+        <div class="block_product_top"><img src="./product_3.png"><p>蓝堡家用磁控健身车</p><p class="box_price">¥728.00</p></div>
+        <div class="block_product_top"><img src="./product_4.png"><p>舒华智能静音跑步机</p><p class="box_price">¥3180.00</p></div>
+        <div class="block_product_top"><img src="./product_5.png"><p>阿飒馋迪达斯拉力绳多功能臂力器健身训练套装</p><p class="box_price">¥230.00</p></div>
+
+        <div class="block_product_bottom"><img src="./product_6.png"><p>尤尼克斯全碳素羽毛球拍</p><p class="box_price">¥299.00</p></div>
+        <div class="block_product_bottom"><img src="./product_7.png"><p>酷改短袖骑行服春秋季套装自行车骑行服</p><p class="box_price">¥139.00</p></div>
+        <div class="block_product_bottom"><img src="./product_8.png"><p>GSGC动感单车健身车室内运动健身器材</p><p class="box_price">¥799.00</p></div>
+        <div class="block_product_bottom"><img src="./product_9.png"><p>百斯锐羽毛球鞋</p><p class="box_price">¥358.00</p></div>
+        <div class="block_product_bottom"><img src="./product_10.png"><p>福特折叠自行车</p><p class="box_price">¥1568.00</p></div>
+
+        <div class="block_poster_foot">
+            <a href="#" style="display: block;text-decoration: none;color: #696969;font-size: 14px;line-height: 25px;">小器材 大牌秀&gt;</a>
+            <a href="#" style="display: block;text-decoration: none;color: #696969;font-size: 14px;line-height: 25px;">探路者夏季清仓&gt;</a><br>
+            <a href="#" style="text-decoration: none;color: #696969;font-size: 12px;">户外馆</a>
+            <a href="#" style="text-decoration: none;color: #696969;font-size: 12px;">折叠车</a>
+            <a href="#" style="text-decoration: none;color: #696969;font-size: 12px;">跑步鞋</a><br>
+            <a href="#" style="text-decoration: none;color: #696969;font-size: 12px;">智能穿戴</a>
+            <a href="#" style="text-decoration: none;color: #696969;font-size: 12px;">羽毛球拍 </a>
+            <a href="#" style="text-decoration: none;color: #696969;font-size: 12px;">篮球馆</a>
+        </div>
+    </div>
+</body>
+</html>

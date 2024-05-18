@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 数学运算符：
+        1、+ 两边都为数字做和运算，否则做字符串拼接
+        2、- 做差运算，只对值做运算
+        3、* 做积运算，只对值做运算
+        4、/ 做商运算，只对值做运算
+        5、= 赋值运算
+        6、+= -= *= /=
+        比较运算符：
+        1、== 等于，值比较
+        2、=== 全等于，值比较，类型比较
+        3、!= 不等于，值比较
+        4、!== 全不等于，值比较，类型比较
+        5、>= <= 
+        一元运算符：
+        1、i++ 先用后加
+        2、++i 先加后用
+        逻辑运算符：
+        1、&& 与
+        2、|| 或
+        3、！ 非
+        附录：
+        1、document.querySelector()方法可以获取标签
+        2、选择器.value可以拿到标签里的value值
+    -->
+
+    <input type="text" class="weather1">请输入天气
+    <input type="text" class="weather2">请输入天气
+    <button>确定</button>
+    <input type="text" class="result">
+
+    <script>
+        var weather1 = document.querySelector('.weather1');
+        var weather2 = document.querySelector(".weather2");
+        console.log(weather1);
+        var res = document.querySelector(".result");
+        res.onclick()=function(){
+            if(weather1.value == '下雨' || weather2.value == '大太阳' || weather1.value == '大太阳' || weather2.value == '下雨'){
+            res.value = '带伞';
+            }
+        }
+
+        // var age = Number(prompt('请输入年龄：'));
+        // if(age >= 18){
+        //     document.write('<h1>可以上网</h1>');
+        // }
+        // else{
+        //     document.write('<h1>不可以上网</h1>');
+        // }
+
+        // var weather = prompt('是否下雨了？');
+        // if(weather === '下雨了'){
+        //     document.write('<h1>需要带伞</h1>');
+        // }
+        // else{
+        //     document.write('<h1>不需要带伞</h1>');
+        // }
+    </script>
+</body>
+</html>

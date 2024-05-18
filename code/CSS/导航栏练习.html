@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 80px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            background-color: #dfdfdf;
+
+            display: inline-block;
+        }
+        .text0{
+            display: none;
+        }
+        .text1{
+            display: block;
+        }
+        .box:hover{
+            background-color: #dd4c17;
+            color: white;
+            cursor: pointer;
+        }
+        .box:hover .text0{
+            display: block;
+        }
+        .box:hover .text1{
+            display: none;
+        }
+        .box2{
+            height: 8px;
+            background-color: #dd4c17;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="text0">首页</div>
+        <div class="text1">Home</div>
+    </div>
+    <div class="box">
+        <div class="text0">博客</div>
+        <div class="text1">Blog</div>
+    </div>
+    <div class="box">
+        <div class="text0">留言板</div>
+        <div class="text1">guestbook</div>
+    </div>
+    <div class="box">
+        <div class="text0">PICKBAR</div>
+        <div class="text1">Pickbar</div>
+    </div>
+    <div class="box">
+        <div class="text0">FANSIR</div>
+        <div class="text1">fansir</div>
+    </div>
+    <div class="box2"></div>
+</body>
+</html>

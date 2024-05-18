@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .logo_left{
+            width: 122px;
+            height: 80px;
+            background-image: url(./default_brandwall_bgwide.png);
+            background-position: 23px -170px;
+            border: 1px solid red;
+            float: left;
+        }
+        .logo_right{
+            width: 122px;
+            height: 80px;
+            background-image: url(./default_brandwall_bgwide.png);
+            background-position: -122px -170px;
+            border: 1px solid red;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        sprite图
+        将多个小图标放在一张图里，通过定位取到需要使用的图标
+     -->
+    <div class="logo_left"></div>
+    <div class="logo_right"></div>
+</body>
+</html>

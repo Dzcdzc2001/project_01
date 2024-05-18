@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .circle{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            border: 2px solid;
+            border-radius: 50%;
+
+            position: relative;
+        }
+        .point_h{
+            width: 100px;
+            height: 6px;
+            background-color: red;
+
+            position: absolute;
+            left: 250px;
+            top: 247px;
+
+            transform: rotate(-90deg);
+            transform-origin: left center;
+
+            transition: all 21600s ease-out;
+        }
+        .point_m{
+            width: 150px;
+            height: 4px;
+            background-color: yellow;
+
+            position: absolute;
+            left: 250px;
+            top: 248px;
+
+            transform: rotate(0deg);
+            transform-origin: left center;
+
+            transition: all 21600s ease-out;
+        }
+        .point_s{
+            width: 200px;
+            height: 2px;
+            background-color: green;
+
+            position: absolute;
+            left: 250px;
+            top: 249px;
+
+            transform: rotate(30deg);
+            transform-origin: left center;
+
+            transition: all 21600s ease-out;
+        }
+        .circle:hover .point_h{
+            transform: rotate(360deg);
+        }
+        .circle:hover .point_m{
+            transform: rotate(10800deg);
+        }
+        .circle:hover .point_s{
+            transform: rotate(324000deg);
+        }
+        .time_log{
+            width: 250px;
+            height: 12px;
+            padding-left: 230px;
+            text-align: center;
+            line-height: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            box-sizing: border-box;
+
+            position: absolute;
+            left: 250px;
+            top: 244px;
+
+            transform-origin: left center;
+        }
+
+        /* 
+        旋转变换：transform: rotate()
+        平移变换：transform: translate3d() 多用作居中操作
+        缩放变换：transform: scale()
+        变换原点：transform: origin
+        */
+    </style>
+</head>
+<body>
+    <div class="circle">
+        <div class="point_s"></div>
+        <div class="point_m"></div>
+        <div class="point_h"></div>
+
+        <div class="time_log" style="transform: rotate(-60deg);">1</div>
+        <div class="time_log" style="transform: rotate(-30deg);">2</div>
+        <div class="time_log" style="transform: rotate(0deg);">3</div>
+        <div class="time_log" style="transform: rotate(30deg);">4</div>
+        <div class="time_log" style="transform: rotate(60deg);">5</div>
+        <div class="time_log" style="transform: rotate(90deg);">6</div>
+        <div class="time_log" style="transform: rotate(120deg);">7</div>
+        <div class="time_log" style="transform: rotate(150deg);">8</div>
+        <div class="time_log" style="transform: rotate(180deg);">9</div>
+        <div class="time_log" style="transform: rotate(210deg);">10</div>
+        <div class="time_log" style="transform: rotate(240deg);">11</div>
+        <div class="time_log" style="transform: rotate(270deg);">12</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: greenyellow;
+            position: relative;
+
+            transition: all 1s;
+        }
+        .eyes_left{
+            width: 150px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 1);
+            position: absolute;
+            left: 50px;
+            top: 100px;
+            transform: rotate(0);
+            transition: all 1s;
+        }
+        .eyes_right{
+            width: 150px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 1);
+            position: absolute;
+            left: 300px;
+            top: 100px;
+            transform: rotate(0);
+            transition: all 1s;
+        }
+        .mouth_leftpart{
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            position: absolute;
+            left: 100px;
+            bottom: 150px;
+            transition: all 1s;
+        }
+        .mouth_rightpart{
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            position: absolute;
+            right: 100px;
+            bottom: 150px;
+            transition: all 1s;
+        }
+        .mouth_center{
+            width: 200px;
+            height: 50px;
+            background-color: black;
+            position: absolute;
+            left: 150px;
+            bottom: 100px;
+            transition: all 1s;
+        }
+        .container:hover{
+            border-radius: 20%;
+            background-color: rgb(255, 100, 100);
+        }
+        .container:hover .eyes_left{
+            top: 125px;
+            transform: rotate(15deg);
+        }
+        .container:hover .eyes_right{
+            top: 125px;
+            transform: rotate(-15deg);
+        }
+        .container:hover .mouth_leftpart{
+            bottom: 100px;
+        }
+        .container:hover .mouth_rightpart{
+            bottom: 100px;
+        }
+        .container:hover .mouth_center{
+            bottom: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="eyes_left"></div>
+        <div class="eyes_right"></div>
+        <div class="mouth_leftpart"></div>
+        <div class="mouth_rightpart"></div>
+        <div class="mouth_center"></div>
+    </div>
+</body>
+</html>

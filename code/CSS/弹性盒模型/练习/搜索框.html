@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 70vw;
+            height: 5vh;
+            margin: 100px auto;
+
+            border: 1px solid;
+            border-radius: 6px;
+            box-sizing: border-box;
+
+            display: flex;
+        }
+        .item_search{
+            width: 100px;
+            height: 100%;
+
+            background-color: #2eb3e8;
+            border: none;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+            color:white;
+            align-self: flex-end;
+        }
+        .item_input{
+            flex: 1;
+            height: 100%;
+
+            border: none;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" class="item_input"><input type="button" value="百度一下" class="item_search">
+    </div>
+</body>
+</html>

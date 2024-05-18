@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: calc(100% - 100px);
+            height: 100vh;
+            background-color: green;
+            color: white;
+            font-size: calc(4rem - 2rem);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        流式布局：百分比布局
+        1、各级元素成比例关系
+        2、宽度和高度相对于viewport可以使用vw和vh单位
+        3、字体大小相对于父级字体大小用em，也可以相对于根字体大小12px用rem，但一般对字体大小的处理是给固定值
+        4、calc()函数可以计算大小，加减运算符要和值之间保留一个空格
+     -->
+    <div class="box">hello world</div>
+</body>
+</html>

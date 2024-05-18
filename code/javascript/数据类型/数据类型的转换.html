@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数据类型的转换
+
+
+        //转数字
+        // 1、number()只能用于纯数字，否则显示NaN
+        // 2、parseInt()按位转数字，遇到非数字会停止转换，对数字进行向下取整
+        // 3、parseFloat()按位转数字，遇到非数字会停止转换，保留小数部分
+        // 4、非+运算可以隐士转换
+        var a = '100.1px';
+        console.log(Number(a));
+        console.log(parseInt(a));
+        console.log(parseFloat(a));
+
+         //转字符串
+         // 1、toString()通过调用对象里的方法实现
+         // 2、String()通过函数实现
+         // 3、+运算可以隐式转换
+         var b = 100;
+         console.log(b.toString());
+         console.log(String(b));
+
+         //转布尔值
+         // 1、Boolean()
+         // 2、通过判断语句隐式转换
+         var c = 10;
+         console.log(Boolean(c));
+    </script>
+</body>
+</html>
