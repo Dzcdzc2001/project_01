@@ -31,19 +31,19 @@
         2、选择器.value可以拿到标签里的value值
     -->
 
-    <input type="text" class="weather1">请输入天气
-    <input type="text" class="weather2">请输入天气
-    <button>确定</button>
+    请输入天气<input type="text" class="weather1"><br>
+    请输入天气<input type="text" class="weather2"><br>
+    <button class="button">确定</button>
     <input type="text" class="result">
 
     <script>
-        var weather1 = document.querySelector('.weather1');
+        var weather1 = document.querySelector(".weather1");
         var weather2 = document.querySelector(".weather2");
-        console.log(weather1);
+        var button = document.querySelector(".button");
         var res = document.querySelector(".result");
-        res.onclick()=function(){
+        button.onclick=function(){
             if(weather1.value == '下雨' || weather2.value == '大太阳' || weather1.value == '大太阳' || weather2.value == '下雨'){
-            res.value = '带伞';
+                res.value = '带伞'; 
             }
         }
 
