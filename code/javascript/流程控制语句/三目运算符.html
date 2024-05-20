@@ -8,7 +8,8 @@
 <body>
     <script>
         var weather = prompt("是否下雨了");
-        weather == "是"?alert("带伞"):alert("不带伞");
+        weather == "是" || weather == "否"?(weather == "是"?alert("带伞"):alert("不带伞")):alert("格式错误");
+        // weather == "是"?alert("带伞"):alert("不带伞");
 
         //当使用``定义字符串时，可以使用${}解析表达式达到字符串拼接的效果，${}里作流程控制表达式时只能使用三目运算符
     </script>
