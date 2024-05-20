@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+             1.输入年份判断改年是平年还是闰年
+                `能够被4整除 且不能被100整除 或者 能够被400整除的年份就是闰年 其他的就是平年`
+
+              2.根据输入的三个数字，判断是这一年的第几天
+                例如 ： 
+                    var year = 2016
+                    var month = 2
+                    var day = 11
+
+                    // 逻辑代码
+
+                    // 输出是第 42 天
+        
+        */
+       var year = Number(prompt("year"));
+       var month = Number(prompt("month"));
+       var day = Number(prompt("day"));
+       var count;
+
+    //    if(year%4 == 0 && year%100 > 0 || year%400 == 0){
+    //         switch(month){
+    //             case 1:
+    //                 count = day;
+    //                 break;
+    //             case 2:
+    //                 count = day + 31;
+    //                 break;
+    //             case 3:
+    //                 count = day + 60;
+    //                 break;
+    //             case 4:
+    //                 count = day + 91;
+    //                 break;
+    //             case 5:
+    //                 count = day + 121;
+    //                 break;
+    //             case 6:
+    //                 count = day + 152;
+    //                 break;
+    //         }
+    //         document.write("<h1>今年是润年第" + count + "天<h1/>");
+    //    }else{
+    //         switch(month){
+    //             case 1:
+    //                 count = day;
+    //                 break;
+    //             case 2:
+    //                 count = day + 31;
+    //                 break;
+    //             case 3:
+    //                 count = day + 59;
+    //                 break;
+    //             case 4:
+    //                 count = day + 90;
+    //                 break;
+    //             case 5:
+    //                 count = day + 120;
+    //                 break;
+    //             case 6:
+    //                 count = day + 151;
+    //                 break;
+    //         }
+    //         document.write("<h1>今年是平年第" + count + "天<h1/>");
+    //    }
+
+    switch(month){
+        case 1:
+            count = day;
+            break;
+        case 2:
+            count = day + 31;
+            break;
+        case 3:
+            count = day + 60;
+            break;
+        case 4:
+            count = day + 91;
+            break;
+        case 5:
+            count = day + 121;
+            break;
+        case 6:
+            count = day + 152;
+            break;
+    }
+    if(year%4 == 0 && year%100 > 0 || year%400 == 0){
+        document.write("<h1>今年是润年第" + count + "天<h1/>");
+    }else if(month > 2){
+        count -= 1;
+        document.write("<h1>今年是平年第" + count + "天<h1/>");
+    }else{
+        document.write("<h1>今年是平年第" + count + "天<h1/>");
+    }
+    //还可以用swith穿透实现
+
+    </script>
+</body>
+</html>

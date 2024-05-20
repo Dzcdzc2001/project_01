@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 请输入年龄：<input type="text" class="age"><br>
+    <button class="button">确定</button>
+    <input type="text" class="result"> -->
+    <script>
+        // var age = document.querySelector(".age");
+        // var button = document.querySelector(".button");
+        // var result = document.querySelector(".result");
+        // button.onclick = function(){
+        //     if(!isNaN(age.value) && age.value > 0 && age.value%1 == 0){
+        //         if(age.value >= 18){
+        //             result.value = "可以上网";
+        //         }
+        //         else{
+        //             result.value = "不可以上网";
+        //         }
+        //     }
+        //     else{
+        //         alert("格式输入错误，请重新输入！");
+        //         age.value = "";
+        //         result.value = "";
+        //     }
+        // }
+
+        // var week;
+        // while(1){
+        //     week = prompt("请输入星期几：");
+        //     if(week == "星期一" || week == "星期五"){
+        //         alert("麻婆豆腐");
+        //         break;
+        //     }
+        //     else if(week == "星期二"){
+        //         alert("鱼香肉丝");
+        //         break;
+        //     }
+        //     else if(week == "星期三" || week == "星期六" || week == "星期天"){
+        //         alert("番茄鸡蛋");
+        //         break;
+        //     }
+        //     else if(week == "星期四"){
+        //         alert("吃泡面");
+        //         break;
+        //     }
+        //     else{
+        //         alert("格式错误，请重新输入");
+        //     }
+        // }
+
+        var number;
+        while(1){
+            number = prompt("请输入数字");
+            if(!isNaN(number)){
+                if(number%2 == 0 && number > 1 && number < 10){
+                    console.log(number + "是十以内的偶数");
+                }
+                else if(number%2 > 0 && number > 1 && number < 10){
+                    console.log(number + "是十以内的奇数");
+                }
+                else{
+                    console.log(number + "不在十以内");
+                }
+                break;
+            }
+            else{
+                alert("格式错误");
+            }
+        }
+
+    </script>
+</body>
+</html>
