@@ -410,7 +410,7 @@ html{
 }
 .productConfiguration .activities{
     font-size: .0938rem;
-    margin-bottom: .2969rem;
+    
 }
 .productConfiguration .activities span{
     display: inline-block;
@@ -435,7 +435,8 @@ html{
 .productConfiguration .patch:hover{
     color: black;
 }
-.productConfiguration .color{
+.productConfiguration .caption{
+    margin-top: .2969rem;
     font-size: .125rem;
 }
 .productConfiguration .skinSheet{
@@ -461,11 +462,101 @@ html{
     height: .2083rem;
     vertical-align: middle;
 }
+.productConfiguration .skinSheet .unsale{
+    width: 1.7813rem;
+    height: .3125rem;
+    margin-top: .1042rem;
+    border: .0052rem solid #f1f1f1;
+    border-radius: .0521rem;
+    text-decoration: line-through;
+    color: #bebebe;
+    line-height: .3125rem;
+    text-align: center;
+}
 .productConfiguration .skinSheet .skin:hover{
     border-color: #cb242b;
     color: #cb242b;
 }
-
+.productConfiguration .yancb{
+    margin-top: .1354rem;
+    color: #676767;
+    font-size: .1146rem;
+}
+.productConfiguration .skinSheet .skin span{
+    font-size: .0938rem;
+    text-decoration: line-through;
+    color: #424242;
+    margin-left: .026rem;
+}
+.productConfiguration .address{
+    width: 100%;
+    height: .3125rem;
+    margin-top: .1042rem;
+    border: .0052rem solid #e5e5e5;
+    border-radius: .0521rem;
+    font-size: .1042rem;
+    line-height: .3125rem;
+    padding: 0 .1042rem 0 .1042rem;
+    box-sizing: border-box;
+    position: relative;
+}
+.productConfiguration .address:hover{
+    border: none;
+}
+.productConfiguration .address:hover .addressContainer{
+    display: block;
+}
+.productConfiguration .address .addressContainer{
+    width: 100%;
+    height: 3.8594rem;
+    padding: .1042rem;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: .0521rem;
+    box-shadow: 0 0 .1563rem .0052rem rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.productConfiguration .address .addressContainer .addressLog{
+    line-height: .1042rem;
+}
+.productConfiguration .address .addressContainer .caption{
+    line-height: .125rem;
+}
+.productConfiguration .address .addressContainer .selectBar{
+    width: 100%;
+    margin-top: .2396rem;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.productConfiguration .address .addressContainer .selectBar li{
+    margin-right: .1563rem;
+    font-size: .1146rem;
+    line-height: .1146rem;
+    color: #666666;
+}
+.productConfiguration .address .addressContainer .area{
+    width: 100%;
+    margin-top: .1042rem;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: .1042rem;
+    text-align: center;
+}
+.productConfiguration .address .addressContainer .area li{
+    width: 16.66%;
+    margin-top: .1302rem;
+    line-height: .1146rem;
+    /* height: ; */
+}
+.productConfiguration .delivery{
+    margin-top: .1302rem;
+    font-size: .1042rem;
+}
 
 .productInfbar{
     width: 10rem;
