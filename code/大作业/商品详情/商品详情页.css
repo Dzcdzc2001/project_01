@@ -551,12 +551,20 @@ html{
     width: 16.66%;
     margin-top: .1302rem;
     line-height: .1146rem;
-    /* height: ; */
 }
 .productConfiguration .delivery{
     margin-top: .1302rem;
     font-size: .1042rem;
 }
+.productConfiguration .delivery .activities{
+    display: inline-block;
+    padding: .0156rem .0208rem .0156rem .0208rem;
+    margin-right: .0521rem; 
+    color: #d62d4a;
+    background-color: #fdf2f4;
+    border-radius: .0417rem;
+}
+
 
 .productInfbar{
     width: 10rem;
