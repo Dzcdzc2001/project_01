@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         /* 
@@ -22,87 +24,111 @@
                     // 输出是第 42 天
         
         */
-       var year = Number(prompt("year"));
-       var month = Number(prompt("month"));
-       var day = Number(prompt("day"));
-       var count;
+        //    var year = Number(prompt("year"));
+        //    var month = Number(prompt("month"));
+        //    var day = Number(prompt("day"));
+        //    var count;
 
-    //    if(year%4 == 0 && year%100 > 0 || year%400 == 0){
-    //         switch(month){
-    //             case 1:
-    //                 count = day;
-    //                 break;
-    //             case 2:
-    //                 count = day + 31;
-    //                 break;
-    //             case 3:
-    //                 count = day + 60;
-    //                 break;
-    //             case 4:
-    //                 count = day + 91;
-    //                 break;
-    //             case 5:
-    //                 count = day + 121;
-    //                 break;
-    //             case 6:
-    //                 count = day + 152;
-    //                 break;
-    //         }
-    //         document.write("<h1>今年是润年第" + count + "天<h1/>");
-    //    }else{
-    //         switch(month){
-    //             case 1:
-    //                 count = day;
-    //                 break;
-    //             case 2:
-    //                 count = day + 31;
-    //                 break;
-    //             case 3:
-    //                 count = day + 59;
-    //                 break;
-    //             case 4:
-    //                 count = day + 90;
-    //                 break;
-    //             case 5:
-    //                 count = day + 120;
-    //                 break;
-    //             case 6:
-    //                 count = day + 151;
-    //                 break;
-    //         }
-    //         document.write("<h1>今年是平年第" + count + "天<h1/>");
-    //    }
+        //    if(year%4 == 0 && year%100 > 0 || year%400 == 0){
+        //         switch(month){
+        //             case 1:
+        //                 count = day;
+        //                 break;
+        //             case 2:
+        //                 count = day + 31;
+        //                 break;
+        //             case 3:
+        //                 count = day + 60;
+        //                 break;
+        //             case 4:
+        //                 count = day + 91;
+        //                 break;
+        //             case 5:
+        //                 count = day + 121;
+        //                 break;
+        //             case 6:
+        //                 count = day + 152;
+        //                 break;
+        //         }
+        //         document.write("<h1>今年是润年第" + count + "天<h1/>");
+        //    }else{
+        //         switch(month){
+        //             case 1:
+        //                 count = day;
+        //                 break;
+        //             case 2:
+        //                 count = day + 31;
+        //                 break;
+        //             case 3:
+        //                 count = day + 59;
+        //                 break;
+        //             case 4:
+        //                 count = day + 90;
+        //                 break;
+        //             case 5:
+        //                 count = day + 120;
+        //                 break;
+        //             case 6:
+        //                 count = day + 151;
+        //                 break;
+        //         }
+        //         document.write("<h1>今年是平年第" + count + "天<h1/>");
+        //    }
 
-    switch(month){
-        case 1:
-            count = day;
-            break;
-        case 2:
-            count = day + 31;
-            break;
-        case 3:
-            count = day + 60;
-            break;
-        case 4:
-            count = day + 91;
-            break;
-        case 5:
-            count = day + 121;
-            break;
-        case 6:
-            count = day + 152;
-            break;
-    }
-    if(year%4 == 0 && year%100 > 0 || year%400 == 0){
-        document.write("<h1>今年是润年第" + count + "天<h1/>");
-    }else if(month > 2){
-        count -= 1;
-        document.write("<h1>今年是平年第" + count + "天<h1/>");
-    }else{
-        document.write("<h1>今年是平年第" + count + "天<h1/>");
-    }
-    //还可以用swith穿透实现
+        // switch(month){
+        //     case 1:
+        //         count = day;
+        //         break;
+        //     case 2:
+        //         count = day + 31;
+        //         break;
+        //     case 3:
+        //         count = day + 60;
+        //         break;
+        //     case 4:
+        //         count = day + 91;
+        //         break;
+        //     case 5:
+        //         count = day + 121;
+        //         break;
+        //     case 6:
+        //         count = day + 152;
+        //         break;
+        // }
+        // if(year%4 == 0 && year%100 > 0 || year%400 == 0){
+        //     document.write("<h1>今年是润年第" + count + "天<h1/>");
+        // }else if(month > 2){
+        //     count -= 1;
+        //     document.write("<h1>今年是平年第" + count + "天<h1/>");
+        // }else{
+        //     document.write("<h1>今年是平年第" + count + "天<h1/>");
+        // }
+        //还可以用swith穿透实现
 
+        // for(var i = 1;i <=5;i++){
+        //     var a = "";
+        //     for(var j=1;j<=i;j++){
+        //         a+="*";
+        //     }
+        //     a+="</br>";
+        //     if(i>=3){
+        //         document.write(a);
+        //     }
+        // }
+
+        // for (var i = 1; i <= 100; i++) {
+        //     var count = 0;
+        //     for (var j = 0; j <= Math.sqrt(i); j++) {
+        //         if (i % j == 0) {
+        //             count++;
+        //         }
+        //     }
+        //     if (count == 1 && i > 5) {
+        //         document.write("有大于五的质数");
+        //         break;
+        //     }
+        // }
     </script>
 </body>
+
 </html>

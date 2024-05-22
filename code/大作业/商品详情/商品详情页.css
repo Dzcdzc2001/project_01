@@ -564,7 +564,24 @@ html{
     background-color: #fdf2f4;
     border-radius: .0417rem;
 }
-
+.productConfiguration .saleService{
+    width: 100%;
+    height: .3958rem;
+    margin-top: .1563rem;
+    margin-bottom: .2344rem;
+    background-color: #fafafa;
+    color: #676767;
+    border-radius: .0521rem;
+    font-size: .0938rem;
+}
+.productConfiguration .saleService span{
+    line-height: .3958rem;
+    margin-left: .1042rem; 
+}
+.productConfiguration .pickModel{
+    font-size: .1042rem;
+    color: #676767;
+}
 
 .productInfbar{
     width: 10rem;
