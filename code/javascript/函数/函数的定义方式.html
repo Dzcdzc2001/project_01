@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //方式一
+        function fc() {
+            console.log("函数fc被调用");
+        }
+        fc();
+        //方式二
+        var fn = function () {
+            console.log("函数fn被调用");
+        }
+        fn();
+
+        function Table() {
+            var html = "<table width='300px' height='300px' border='1px'";
+            for (var i = 0; i < 3; i++) {
+                html += "<tr>";
+                for (var j = 0; j < 3; j++) {
+                    html += "<td></td>";
+                }
+                html += "</tr>";
+            }
+            html += "</table>";
+            // console.log(html);
+            document.write(html);
+        }
+        // for (var i = 0; i < 3; i++) {
+        //     Table();
+        // }
+
+        function createList(row, flag) {
+            var html = "<ul style='list-style:none;'>";
+            for (var i = 1; i <= row; i++) {
+                if (i % 2 == 0 && flag) {
+                    html += "<li style='background-color:red;border:1px solid;'>" + i + "</li>";
+                } else {
+                    html += "<li style='border:1px solid;'>" + i + "</li>";
+                }
+            }
+            html += "</ul>"
+            document.write(html);
+        }
+        var num = Number(prompt("输入行数"));
+        var flag = Number(prompt("1隔行变色 0不变色"));
+        createList(num, flag);
+
+    </script>
+</body>
+
+</html>

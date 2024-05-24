@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function measureCircleArea(radius) {
+            var area;
+            area = 3.14 * radius ** 2;
+            console.log(area);
+        }
+        // measureCircleArea(2);
+
+        function draw(row) {
+            for (var i = 0; i < row; i++) {
+                for (var k = row - i; k > 0; k--) {
+                    document.write("&nbsp;&nbsp;");
+                }
+                for (var j = 0; j < 2 * i - 1; j++) {
+                    document.write("*");
+                }
+                document.write("</br>");
+            }
+        }
+        // draw(7);
+
+        function sumFactorial(n) {
+            var sum = 0;
+            for (var i = 1; i <= n; i++) {
+                var fac = 1;
+                for (var j = i; j > 0; j--) {
+                    fac *= j;
+                }
+                sum += fac;
+            }
+            console.log(sum);
+        }
+        // sumFactorial(3);
+
+        function calculateLength(num) {
+            console.log(num.toString().length);
+        }
+        // calculateLength(123456)
+
+        function encipher(origin) {
+            var cipher1 = "";
+            var cipher2 = "";
+            for (var i = 0; i < 4; i++) {
+                cipher1 += (parseInt(origin.toString()[i]) + 5) % 10;
+            }
+            cipher2 += cipher1[3];
+            cipher2 += cipher1[2];
+            cipher2 += cipher1[1];
+            cipher2 += cipher1[0];
+
+            console.log(cipher2);
+        }
+        // encipher(1111);
+    </script>
+</body>
+
+</html>
