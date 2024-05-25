@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //方式一
+        var obj1={
+            KeyName:"KeyValue"
+        }
+        //方式二
+        var obj2=new Object({KeyName:"KeyValue"})
+
+
+        //精确区分不同数据类型的方法
+        //1、可以区分所有数据类型
+        //Object.prototype.toString.call()
+
+        //2、区分是否为数组
+        // var arr=[]
+        // if(Array.isArray(arr)){
+        //     console.log("isArray");
+        // }
+        
+
+        //3、区分string Bigint function object array
+        // var obj={};
+        // if(obj.constructor===Object){
+        //     console.log("isObject");
+        // }
+        
+
+        // var arr=[{name:"张三",age:20,height:"178cm"},{name:"李四",age:21,height:"180cm"}];
+        // var html="<ul>";
+        // for(let i=0;i<arr.length;i++){
+        //    html+= `<li>姓名：${arr[i].name} 年龄：${arr[i].age} 身高：${arr[i].height}</li>`
+        // }
+        // html+="</ul>";
+        // document.write(html);
+    </script>
+</body>
+</html>

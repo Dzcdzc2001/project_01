@@ -37,21 +37,7 @@
         //     Table();
         // }
 
-        function createList(row, flag) {
-            var html = "<ul style='list-style:none;'>";
-            for (var i = 1; i <= row; i++) {
-                if (i % 2 == 0 && flag) {
-                    html += "<li style='background-color:red;border:1px solid;'>" + i + "</li>";
-                } else {
-                    html += "<li style='border:1px solid;'>" + i + "</li>";
-                }
-            }
-            html += "</ul>"
-            document.write(html);
-        }
-        var num = Number(prompt("输入行数"));
-        var flag = Number(prompt("1隔行变色 0不变色"));
-        createList(num, flag);
+ 
 
     </script>
 </body>

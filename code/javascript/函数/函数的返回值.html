@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function judge(year) {
+            if (year % 4 == 0 && year % 100 > 0 || year % 400 == 0) {
+                return true;
+            }
+            return false;
+        }
+        function printYear(m, n) {
+            var p = "";
+            var count = 0;
+            for (var i = m; i <= n; i++) {
+                if (judge(i) && count < 4) {
+                    p += i + " ";
+                    count++;
+                    if (count == 4) {
+                        p += "</br>";
+                        count = 0;
+                    }
+                }
+            }
+            return p;
+        }
+        // document.write(printYear(1000, 2000));
+        //当没有设置函数返回值时，默认返还undefined
+        var broadcastList = [];
+        function broadcast() {
+            var len = broadcastList.length;
+            for (var i = 0; i < len; i++) {
+                broadcastList[i]();
+            }
+            // console.log("broadcast被调用");
+        }
+        function bindFnc(fn1, fn2) {
+            fn1(0,fn2);
+            
+        }
+        const fn_1 = function(flag,fnc) {
+            if(fnc)
+            broadcastList.push(fnc);
+            if(flag){
+                broadcast();
+            }  
+        }
+        function fn_2() {
+            console.log("fn_2被调用");
+        }
+        function fn_3() {
+            console.log("fn_3被调用");
+        }
+        function fn_4() {
+            console.log("fn_4被调用");
+        }
+        bindFnc(fn_1, fn_2);
+        bindFnc(fn_1, fn_3);
+        bindFnc(fn_1, fn_4);
+        fn_1(1);
+        // bindFnc(fn_1,fn_3);
+    </script>
+</body>
+
+</html>
