@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //简单数据类型在拷贝时只会传值，但复杂数据类型会传址，更改数据时会影响多个变量，出现浅拷贝问题
+        //使用JSON里的两个方法可以实现深拷贝：JSON.stringify(),JSON.parse()
+        //局限性：无法拷贝函数，undefined，symbol，map，set
+        // var arr1 = [1, 2, 3];
+        // var arr2 = JSON.parse(JSON.stringify(arr1));
+        // arr2[0] = 0;
+        // console.log(arr1);
+        // console.log(arr2);
+
+        //使用递归实现深拷贝：
+        function varietyDeepCopy(data) {
+            var data2;
+            if (typeof data === 'function') {
+                data = function () { };
+                data2 = data;
+            } else if (Array.isArray(data)) {
+                data2 = [];
+                for (let i = 0; i < data.length; i++) {
+                    data2[i] = deepCopy(data[i]);
+                }
+            } else if (Object.prototype.toString.call(data) === '[object Object]') {
+                data2 = {};
+                for (let key in data) {
+                    data2[key] = deepCopy(data[key]);
+                }
+            } else {
+                data2 = data;
+            }
+            return data2;
+        }
+        function deepCopy(data) {
+            var data2 = Array.isArray(data) ? [] : {};
+            for (let key in data) {
+                if (typeof data[key] === 'Object') {
+                    data2[key] = deepCopy(data[key]);
+                } else {
+                    data2[key] = data[key];
+                }
+            }
+            return data2;
+        }
+        // var arr = [1, 2, 3, [3, 4, { name: 'Bob', age: 22 }], function () { console.log('fn() is called') }];
+        var arr = [1, 2, 3, [3, 4, { name: 'Bob', age: 22 }]];
+        var arr2 = deepCopy(arr);
+        // var arr2 = varietyDeepCopy(arr);
+        arr2[3][2].name = "Jake";
+        console.log(arr);
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

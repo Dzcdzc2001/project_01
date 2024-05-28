@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* *{
+            margin: 0;
+            padding: 0;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <script>
+        function print(arr) {
+            var html = '<ul>';
+            for (let i = 0; i < arr.length; i++) {
+                html += `<li>姓名：${arr[i].name} 年龄：${arr[i].age} 分数：${arr[i].score}</li>`;
+            }
+            html += '</ul>';
+            document.write(html);
+        }
+        var arr = [{ name: '张安1', age: 23, score: 69 }, { name: '张安2', age: 23, score: 98 }, { name: '张安3', age: 23, score: 82 }];
+        print(arr);
+
+        document.write("<button class='button'>排序</button>");
+        var button = document.querySelector('.button');
+        button.onclick = function () {
+            print(arr);
+            document.write("<button class='button'>排序</button>");
+            arr.sort(function (a, b) { return a.score - b.score });
+            print(arr);
+            // console.log(111);
+        }
+
+
+    </script>
+</body>
+
+</html>

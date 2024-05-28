@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //aabccd，去掉重复的字符，使结果显示 abcd      
+        function rmRepeat(str) {
+            var arr = str.split('')
+            var str2 = '';
+            for (let i = 0; i < arr.length; i++) {
+                if (str2.indexOf(arr[i]) === -1) {
+                    str2 += arr[i];
+                }
+            }
+            return str2;
+
+            //通过对象键名重复会覆盖的特性实现去重
+            // var obj ={};
+            // for(let i=0;i<str.length;i++){
+            //     obj[str[i]]='';
+            // }
+            // console.log(obj)
+        }
+        // var str = "aabccd";
+        // console.log(rmRepeat(str));
+
+        //编写函数，判断一个字符串是否是 “可回文字符串”
+        // - 可回文字符串： 正着和反着一样
+        // - 例如： abcba / 你好世界世好你
+        // - 返回值是布尔值
+        function fn(str) {
+            var arr = str.split('');
+            arr.reverse();
+            //var newStr=arr.join('');
+            //if(str===newStr){return true;}else{return false;}
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] != str.split('')[i]) {
+                    return false;
+                }
+            }
+            return true
+        }
+        // var str = "abcba";
+        // console.log(fn(str));
+
+        //反转字符串
+        function reverseStr(str) {
+            var arr = str.split('');
+            var str2 = "";
+            arr.reverse();
+            return arr.join('');
+        }
+        // var str = "abcdefg";
+        // console.log(reverseStr(str));
+
+        //统计字符串中每个字符的个数？
+        function countLetter(str) {
+            var str2 = rmRepeat(str);
+            var obj = {};
+            // for (let i = 0; i < str2.length; i++) {
+            //     obj[str2[i]] = 0;
+            //     var count = 0;
+            //     for (let j = 0; j < str.length; j++) {
+            //         if (str[j] === str2[i]) {
+            //             count++;
+            //         }
+            //     }
+            //     obj[str2[i]] = count;
+            // }
+
+            for (let i = 0; i < str.length; i++) {
+                if (!obj[str[i]]) {
+                    obj[str[i]] = 1;
+                } else {
+                    obj[str[i]]++;
+                }
+            }
+            return obj;
+        }
+        var str = 'abcdacbabcbababcbabcabd';
+        console.log(countLetter(str));
+    </script>
+</body>
+
+</html>

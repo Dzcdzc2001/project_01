@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [9, 6, 3, 5, 7, 2, 1, 8, 4];
+        console.log(arr);
+        for (let i = 0; i < arr.length - 1; i++) {
+            let min = i;
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[min] > arr[j]) {
+                    min = j;
+                    console.log(arr);
+                }               
+            }
+            let temp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = temp;
+        }
+
+        // for (let i = 0; i < arr.length - 1; i++) {
+        //     for (let j = 0; j < arr.length - i - 1; j++) {
+        //         if (arr[j] > arr[j + 1]) {
+        //             let temp = arr[j];
+        //             arr[j] = arr[j + 1];
+        //             arr[j + 1] = temp;
+        //             console.log(arr);
+        //         }            
+        //     }
+        // }
+
+        // var a = 0;
+        // for (let i = 0; i < arr.length; i++) {
+        //     for (let j = a; j < arr.length; j += 2) {
+        //         if (arr[j] > arr[j + 1]) {
+        //             let temp = arr[j];
+        //             arr[j] = arr[j + 1];
+        //             arr[j + 1] = temp;
+        //             console.log(arr);
+        //         }              
+        //     }
+        //     a++
+        //     if (a > 1) {
+        //         a = 0;
+        //     }
+        // }
+
+    </script>
+</body>
+
+</html>

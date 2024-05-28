@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .box{
-
-        }
-        .block1{
-            display: inline-block;
-            vertical-align: top;
+        .container .block .box img{
             width: 300px;
+            height: 300px;
         }
-        .block2{
-            width: 300px ;
+        .block .box img{
+            width: 600px;
+            height: 600px;
         }
     </style>
 </head>
 <body>
-    <div>
-        <p class="block1">111</p>
-        <p class="block2">222</p>
-       
+    <div class="container">
+        <div class="block">
+            <div class="box">
+                <img src="./img/avatar_1.jpg" alt="">
+            </div>
+        </div>    
     </div>
 
 </body>
