@@ -90,12 +90,24 @@
         }
 
         function mySome(arr, fn) {
+            //方式一
             for (let key in arr) {
                 if (fn(arr[key], key, arr)) {
                     return true;
                 }
             }
             return false;
+            //方式二
+            // var flag = false;
+            // for (let key in arr) {
+            //     if (fn(arr[key], key, arr)) {
+            //         flag = flag || fn(arr[key]);
+            //         if (flag) {
+            //             break;
+            //         }
+            //     }
+            // }
+            // return Boolean(flag);
         }
 
         function myEvery(arr, fn) {

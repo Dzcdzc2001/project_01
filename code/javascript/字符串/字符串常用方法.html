@@ -10,20 +10,32 @@
 <body>
     <script>
         var str = "abcxxfgxxlmxxtz";
-        //str.replace()会返还一个新的字符串
-        //while方法
-        // while (str.indexOf('xx') != -1) {
-        //     str = str.replace('xx', '**');
-        // }
-        //递归方法
-        // function fn(str) {
-        //     str=str.replace('xx', '**');
-        //     if (str.indexOf('xx') === -1) {
-        //         return str;
-        //     }else{
-        //         fn(str);
-        //     }           
-        // }
+        // 字符替换方法：str.replace()会返还一个新的字符串
+            //while方法
+            // while (str.indexOf('xx') != -1) {
+            //     str = str.replace('xx', '**');
+            // }
+            //递归方法
+            // function fn(str) {
+            //     str=str.replace('xx', '**');
+            //     if (str.indexOf('xx') === -1) {
+            //         return str;
+            //     }else{
+            //         fn(str);
+            //     }           
+            // }
+
+        //字符截取方法：
+        //str.slice(start,end)
+        //str.substr(start,number)
+        //str.substring(start,end)
+
+        //字符串去首尾空格
+        //str.trim()
+
+        //字符串转大小写
+        //str.toUpperCase()
+        //str.toLowerCase()
         console.log(str);
     </script>
 </body>
