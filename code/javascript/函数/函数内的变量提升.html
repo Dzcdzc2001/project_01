@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数内部的提升 只会提升到函数的顶部 ，不会提升到全局作用域里去；
+        // 1.如果函数内部既有 函数提升 又有变量提升 那么会先提升 变量声明 之后再提升整个函数；
+        // 2.函数内部 优先提升 变量的声明 之后再做参数的赋值操作 ，最后 在提升在函数内部的所有函数；
+        function fn(a, b, c) {
+
+            console.log(a);
+            // function a(){};
+        }
+        fn();
+    </script>
+</body>
+
+</html>

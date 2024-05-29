@@ -61,7 +61,7 @@
 
         //统计字符串中每个字符的个数？
         function countLetter(str) {
-            var str2 = rmRepeat(str);
+            // var str2 = rmRepeat(str);
             var obj = {};
             // for (let i = 0; i < str2.length; i++) {
             //     obj[str2[i]] = 0;
@@ -74,17 +74,36 @@
             //     obj[str2[i]] = count;
             // }
 
-            for (let i = 0; i < str.length; i++) {
-                if (!obj[str[i]]) {
-                    obj[str[i]] = 1;
+            // for (let i = 0; i < str.length; i++) {
+            //     if (!obj[str[i]]) {
+            //         obj[str[i]] = 1;
+            //     } else {
+            //         obj[str[i]]++;
+            //     }
+            // }
+            var arr = str.split('');
+            obj = arr.reduce(function (current, item) {
+                if (!current[item]) {
+                    current[item] = 1;
                 } else {
-                    obj[str[i]]++;
+                    current[item]++;
                 }
-            }
+                return current;
+            },{})
+
             return obj;
         }
         var str = 'abcdacbabcbababcbabcabd';
         console.log(countLetter(str));
+
+        // var arr = ["张三", "李四", "王五"];
+        // var len = arr.length;
+        // console.log(arr);
+        // for (let i = 0; i < len; i++) {
+        //     arr.splice(0, 1);
+        //     console.log(arr);
+        // }
+        // console.log(arr);
     </script>
 </body>
 

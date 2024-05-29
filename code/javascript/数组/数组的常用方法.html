@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         //reverse： 数组的反转
@@ -18,7 +20,7 @@
         //indexOf查找 某个字符在 数组里的位置(字符串也有同样的方法)
         //返还 查找字符的索引值，如果没有 就返还 -1；
         //arr.indexOf("123");
-        
+
         //slice： 做数组的切割 
         //arr.slice(start,end)
         //左闭右开
@@ -29,7 +31,82 @@
         //数组的扁平化 ： 把多维数组转成一维数组 ；
         //1.把数组转成字符串  var str = arr.toString();
         //2.根据特定字符 把字符串转成数组  var arr2 = str.split(",");
-        
+
+        //数组头部添加、删除
+        //arr.unshift()、arr.shift()
+
+        //数组的尾部添加、删除
+        //arr.push()、arr.pop()
+
+        //数组的中间添加、删除
+        //arr.splice(索引,删除数量,添加内容)
+
+        //遍历数组的方法：arr.forEach(function(键值，键名，数组自身){})
+        //映射数组的方法：arr.map(function(键值，键名，数组自身){}) map会将所需的参数放进数组里再返还
+        //过滤数组的方法：arr.filter(function(键值，键名，数组自身){return 条件}) filter会通过过滤条件再返还
+        //递进数组的方法：arr.reduce(function(当前递进状态，键值，键名，数组自身){return 递进方式}，初始状态)reduce会返还最终递进状态
+        //arr.some(function(键值，键名，数组自身){return 条件}) 当内部条件返还为true时停止遍历并返还true,否则遍历完arr并返还false
+        //arr.every(function(键值，键名，数组自身){return 条件}) 当内部条件返还为false时停止遍历并返还false,否则遍历完arr并返还true
+
+        function myEach(arr, fn) {
+            for (let key in arr) {
+                fn(arr[key], key, arr);
+            }
+        }
+
+        function myMap(arr, fn) {
+            var newArr = [];
+            for (let key in arr) {
+                newArr.push(fn(arr[key], key, arr));
+            }
+            return newArr;
+        }
+
+        function myFilter(arr, fn) {
+            var newArr = [];
+            for (let key in arr) {
+                if (fn(arr[key], key, arr)) {
+                    newArr.push(arr[key]);
+                }
+            }
+            return newArr;
+        }
+
+        // var arr=[{name:"张三",age:26,money:100},{name:"张三2",age:21,money:120},{name:"张三3",age:22,money:110}];
+        // var arr2 = arr.map(function(item,key){
+        //     return {name:item.name,age:item.age,money:"$"+ item.money}
+        // })
+        // var arr3= myFilter(arr2,function(item,key){
+        //     return item.age>25;
+        // })
+        // console.log(arr3);
+
+        function myReduce(arr, fn, init) {
+            var current = init;
+            for (let key in arr) {
+                current = fn(current, arr[key]);
+            }
+            return current;
+        }
+
+        function mySome(arr, fn) {
+            for (let key in arr) {
+                if (fn(arr[key], key, arr)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function myEvery(arr, fn) {
+            for (let key in arr) {
+                if (!fn(arr[key], key, arr)) {
+                    return false;
+                }
+            }
+            return true;
+        }
     </script>
 </body>
+
 </html>

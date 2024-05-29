@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 250px;
+            height: 300px;
+            text-wrap: nowrap;
+            overflow: scroll;
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    姓名：<input type="text" class="name"><br>
+    年龄：<input type="text" class="age"><br>
+    性别：<select class="sex">
+        <option value="男">男</option>
+        <option value="女">女</option>
+    </select><br>
+    <button class="commit">确认填写</button><br>
+    <button class="sort">按年龄正序排</button>
+    <button class="filter">筛选</button>
+    <select class="filterCondition">
+        <option value="男">男</option>
+        <option value="女">女</option>
+        <option value="默认">默认</option>
+    </select>
+    <ul class="output">
+
+    </ul>
+
+    <script>
+        //获取标签
+        var nameElm = document.querySelector('.name');
+        var ageElm = document.querySelector('.age');
+        var sexElm = document.querySelector('.sex');
+        var commitElm = document.querySelector('.commit');
+        var sortElm = document.querySelector('.sort');
+        var filterElm = document.querySelector('.filter');
+        var filterConditionElm = document.querySelector('.filterCondition');
+        var output = document.querySelector('.output');
+        //新建数组存放学生信息
+        var studentInf = [];
+        //添加新学生的信息
+        function addStudent() {
+            if (nameElm.value) {
+                studentInf.push({ name: nameElm.value, age: ageElm.value, sex: sexElm.value });
+            }
+            output.innerHTML = toHTML(studentInf);
+            nameElm.value = '';
+            ageElm.value = '';
+        }
+        //按照年龄排序
+        function sortByAge() {
+            studentInf.sort(function (a, b) {
+                return a.age - b.age;
+            })
+            output.innerHTML = toHTML(studentInf);
+        }
+        //筛选学生信息
+        function filterStudent() {
+            var res = studentInf.filter(function (item) {
+                if (filterConditionElm.value === "默认") {
+                    return true;
+                } else {
+                    return item.sex === filterConditionElm.value;
+                }
+            })
+            output.innerHTML = toHTML(res);
+        }
+        //将学生信息从数组中提出并拼接为HTML
+        function toHTML(arr) {
+            var res = arr.reduce(function (current, item) {
+                var html = `<li>姓名：${item.name} 年龄：${item.age} 性别：${item.sex}</li>`;
+                return current + html;
+            }, '')
+            return res;
+        }
+
+        commitElm.onclick = addStudent;
+        sortElm.onclick = sortByAge;
+        filterElm.onclick = filterStudent;
+    </script>
+</body>
+
+</html>
