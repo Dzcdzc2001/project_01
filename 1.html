@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        var a = 20;
-        var b = 10;
-        a = a + b;
-        b = a - b;
-        a = a - b;
-        console.log(a,b);
-        console.log('a = ',a);
+        // var a = [1,2,3,4,5,6];
+        // a.length=3;
+        // a.length=6;
+        // console.log(a);
+        var a;
+        document.onclick = () => {
+            a = setTimeout(() => {
+                console.log(1);
+                clearTimeout(a);
+                console.log(1);
+            }, 1000);    
+        }
+
     </script>
 </body>
+
 </html>

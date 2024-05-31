@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .move {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="AD"></div>
+    <div class="move" style="left:0px;"></div>
+    <script>
+        //获取元素：document.querySelector(".类名")
+        //通过 元素对象.属性 更改属性值
+        var adEle = document.querySelector(".AD");
+        adEle.style.width = "200px";
+        adEle.style.height = "200px";
+        adEle.style.backgroundColor = "red";
+        adEle.onclick = function () {
+            adEle.style.display = 'none';
+            setTimeout(function () {
+                adEle.style.display = 'block';
+            }, 3000)
+        }
+
+        var moveEle = document.querySelector(".move");
+        moveEle.style.width = "200px";
+        moveEle.style.height = "200px";
+        moveEle.style.backgroundColor = "red";
+        moveEle.onclick = function () {
+            // moveEle.style.transition='all 3s';
+            // moveEle.style.transform='translate3d(1000px,0,0)'
+            setInterval(() => {
+                moveEle.style.left = parseInt(moveEle.style.left) + 1 + 'px';
+            }, 10)
+
+        }
+    </script>
+</body>
+
+</html>

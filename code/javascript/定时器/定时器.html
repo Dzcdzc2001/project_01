@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //开启倒计时定时器 setTimeout(function,time) 时间单位为ms，返还定时器的索引
+        var timerId=setTimeout(()=>{
+            console.log('excute');
+        },1000);
+        //停止倒计时定时器 clearTimeout(timerId)
+        clearTimeout(timerId);
+        //开启间隔定时器 setInterval(function,time) 时间单位为ms，返还定时器的索引
+        timerId=setInterval(()=>{
+            console.log('excute');
+        },1000);
+        //停止间隔定时器 clearInterval(timerId)
+        clearInterval(timerId);
+        //定时器里程序的执行会在整体程序的最后
+    </script>
+</body>
+</html>

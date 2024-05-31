@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .circle {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            border: 2px solid;
+            border-radius: 50%;
+
+            position: relative;
+        }
+
+        .point_h {
+            width: 100px;
+            height: 6px;
+            background-color: red;
+
+            position: absolute;
+            left: 250px;
+            top: 247px;
+
+            /* transform: rotate(-90deg); */
+            transform-origin: left center;
+        }
+
+        .point_m {
+            width: 150px;
+            height: 4px;
+            background-color: yellow;
+
+            position: absolute;
+            left: 250px;
+            top: 248px;
+
+            /* transform: rotate(-90deg); */
+            transform-origin: left center;
+        }
+
+        .point_s {
+            width: 200px;
+            height: 2px;
+            background-color: green;
+
+            position: absolute;
+            left: 250px;
+            top: 249px;
+
+            /* transform: rotate(-90deg); */
+            transform-origin: left center;
+        }
+
+        .time_log {
+            width: 250px;
+            height: 12px;
+            padding-left: 230px;
+            text-align: center;
+            line-height: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            box-sizing: border-box;
+
+            position: absolute;
+            left: 250px;
+            top: 244px;
+
+            transform-origin: left center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle">
+        <div class="point_s" style="transform: rotate(-90deg);"></div>
+        <div class="point_m" style="transform: rotate(-90deg);"></div>
+        <div class="point_h" style="transform: rotate(-90deg);"></div>
+
+        <div class="time_log" style="transform: rotate(-60deg);">1</div>
+        <div class="time_log" style="transform: rotate(-30deg);">2</div>
+        <div class="time_log" style="transform: rotate(0deg);">3</div>
+        <div class="time_log" style="transform: rotate(30deg);">4</div>
+        <div class="time_log" style="transform: rotate(60deg);">5</div>
+        <div class="time_log" style="transform: rotate(90deg);">6</div>
+        <div class="time_log" style="transform: rotate(120deg);">7</div>
+        <div class="time_log" style="transform: rotate(150deg);">8</div>
+        <div class="time_log" style="transform: rotate(180deg);">9</div>
+        <div class="time_log" style="transform: rotate(210deg);">10</div>
+        <div class="time_log" style="transform: rotate(240deg);">11</div>
+        <div class="time_log" style="transform: rotate(270deg);">12</div>
+    </div>
+    <script>
+        function clock() {
+            var hourPoint = document.querySelector(".point_h");
+            var minutePoint = document.querySelector(".point_m");
+            var secondPoint = document.querySelector(".point_s");
+
+
+            setInterval(function () {
+                var date = new Date();
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+
+                hourPoint.style.transform = `rotate(${hour * 30 - 90 + (minute * 6 + (second * 6) / 60) / 12}deg)`;
+                minutePoint.style.transform = `rotate(${minute * 6 - 90 + (second * 6) / 60}deg)`;
+                secondPoint.style.transform = `rotate(${second * 6 - 90}deg)`;
+            }, 1000)
+        }
+        // clock();
+
+
+        function showDiff() {
+            var futrue = new Date("2024-5-31 09:00:00");
+            var now = new Date();
+            var diff = futrue.getTime() - now.getTime();
+            var diffsec = parseInt(diff / 1000);
+            var day = parseInt(diffsec / (24 * 3600));
+            var hour = parseInt(diffsec % (24 * 3600) / 3600);
+            var minute = parseInt(diffsec % 3600 / 60);
+            var second = parseInt(diffsec % 60);
+            document.body.innerHTML = `距离后天还有${day}天${hour}小时${minute}分钟${second}秒`;
+        }
+        // showDiff();
+        // setInterval(showDiff, 1000);
+
+        function dateOfChinese() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var date = now.getDate()
+            var day = now.getDay();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+            document.body.innerHTML = `现在是${numToC(year)}年${numToC(month)}月${numToC(date)}日${numToC(hour)}点${numToC(minute)}分${numToC(second)}秒`;
+        }
+        function numToC(num) {
+            var str = num + '';
+            var dir = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
+            if (str.length === 4) {
+                return dir[parseInt(str[0])] + dir[parseInt(str[1])] + dir[parseInt(str[2])] + dir[parseInt(str[3])];
+            } else if (str.length === 2) {
+                if (str[0] == 1 && str[1] != 0) {
+                    return dir[10] + dir[parseInt(str[1])];
+                }
+                else if (str[1] == 0 && str[0] == 1) {
+                    return dir[10];
+                }
+                else if (str[1] == 0) {
+                    return dir[parseInt(str[0])] + dir[10];
+                } else {
+                    return dir[parseInt(str[0])] + dir[10] + dir[parseInt(str[1])];
+                }
+            } else if (str.length === 1) {
+                return dir[parseInt(str[0])];
+            }
+        }
+        // var date=new Date()
+        // console.log(date.getFullYear())
+        dateOfChinese();
+        setInterval(dateOfChinese, 1000);
+    </script>
+</body>
+
+</html>
