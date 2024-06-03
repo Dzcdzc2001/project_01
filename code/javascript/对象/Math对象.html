@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function randomNum(min, max) {
+            return parseInt(Math.random() * (max - min)) + min;
+        }
+
+        // setInterval(function () {
+        //     var r = randomNum(0, 256);
+        //     var g = randomNum(0, 256);
+        //     var b = randomNum(0, 256);
+        //     console.log(r, g, b);
+        //     document.body.style['background-color'] = `rgb(${r},${g},${b})`;
+        //     console.log(document.body.style['background-color']);
+        // }, 1000);
+
+        var str='qwer1234tyui567op890';
+        var newStr=""
+        var arr=[];
+        for(let i=0;i<str.length;i++){
+            if(!isNaN(str[i])){
+                // var count=0;
+                // while(!isNaN(str[i+count])){
+                //     newStr+=str.substring(i,i+count);
+                //     count++;
+                // }
+                // arr.push(newStr);
+                // newStr="";
+                // count=0;
+            }
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

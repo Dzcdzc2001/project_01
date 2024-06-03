@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- <ul class="myul">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <span>qwer</span>
+    </ul> -->
+    <ul class="myul">
+        <li><button>换色</button></li>
+        <li><button>换色</button></li>
+        <li><button>换色</button></li>
+    </ul>
+    <script>
+        // var myul=document.querySelector(".myul")
+        //子节点的获取
+        // var myulChildNodes= myul.childNodes;
+        // console.log(myulChildNodes);
+        //子节点的设置
+        // myul.childNodes[1].style.backgroundColor="red";
+
+        var myul=document.querySelector(".myul");
+        for(let i=0;i<myul.children.length;i++){
+            myul.children[i].firstChild.onclick=function(){
+                myul.children[i].firstChild.parentElement.classList.toggle("red");
+            }
+            // console.log(myul.children[i].firstChild)
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .draw {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .roller {
+            list-style: none;
+            transition: all 0.1s;
+        }
+
+        .roller li {
+            width: 100px;
+            text-align: center;
+            line-height: 200px;
+            font-size: 30px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="draw">
+        <ul class="roller">
+            <!-- <li class="rollerItem">张三</li>
+            <li class="rollerItem">李四</li>
+            <li class="rollerItem">王五</li> -->
+        </ul>
+    </div>
+    <button class="startbtn">开始</button>
+    <button class="stopbtn">停止</button>
+    <script>
+        function randomNum(min, max) {
+            return parseInt(Math.random() * (max - min)) + min;
+        }
+        //点名系统 动画滚动效果
+        var arr = ["张三", "李四", "王五", "赵六"];
+        var rollerArr = [];
+        var roller = document.querySelector(".roller");
+        // var rollerItem = document.querySelector(".rollerItem");
+        var startbtn = document.querySelector(".startbtn");
+        var stopbtn = document.querySelector(".stopbtn");
+        var timer;
+        // console.log(arr[0])
+        function creatRollerArr(arr) {
+            var newArr = arr.map(function () {
+                return
+            })
+        }
+        function roll() {
+            var i = 0
+            var html = ""
+            startbtn.onclick = function () {
+                timer = setInterval(function () {
+
+                    roller.innerHTML += `<li>${arr[i++]}</li>`;
+                    // console.log(roller.innerHTML)
+                    if (i > 3) {
+                        i = 0
+                    }
+                }, 100)
+            }
+            // timer= setInterval(function(){
+
+            //     roller.innerHTML+=`<li>${arr[i++]}</li>`;
+            //     // console.log(roller.innerHTML)
+            //     if(i>3){
+            //         i=0
+            //     }
+            // },50)
+            stopbtn.onclick = function () {
+                clearInterval(timer)
+            }
+        }
+        // roll();
+
+        //判断输入的字符是否是一个手机号 ： 1 开头  总的位数是11位
+
+        function phoneNumber(num) {
+            var reg = /^1\d{10}/;
+            if (reg.test(num) && num.length === 11) {
+                console.log("是一个手机号");
+            } else {
+                console.log("不是一个手机号");
+            }
+        }
+        // var str="13995970807";
+        // phoneNumber(str);
+
+        //判断是否是一个qq 号码 ： 最少 5位 最多 11位的数字
+        function isQQ(num) {
+            var reg = /\d{5}/;
+            if (reg.test(num) && num.length < 12) {
+                console.log("是一个qq号");
+            } else {
+                console.log("不是一个qq号");
+            }
+        }
+        // var str = "23794566768";
+        // isQQ(str);
+
+        //通过正则判断 一个数字 是否在 0-255之间；  正则里的或者 是通过 | 
+        function fn(num) {
+            if (/^\d$|^[1-9]\d$|^1\d{2}$|^2[0-4]\d$|^25[0-5]$/.test(num)) {
+                console.log("在0-255之间");
+            } else {
+                console.log("不在0-255之间");
+            }
+        }
+        // fn(0);
+
+        console.log(name);
+    </script>
+</body>
+
+</html>

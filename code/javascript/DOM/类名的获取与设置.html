@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mydiv {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mydiv"></div>
+    <script>
+        var mydiv = document.querySelector(".mydiv");
+        //类名的获取 返回字符串
+        var myClassName = mydiv.className;
+        console.log(myClassName);
+        //类名的获取 返回字符串数组
+        var myClassList=mydiv.classList;
+        console.log(myClassList);
+        document.onclick=function(){
+            //通过字符串拼接更改类名
+            // mydiv.className+=" hidden";
+            //通过数组添加更改类名
+            // mydiv.classList.add("hidden");
+            mydiv.classList.toggle("hidden");//有就删除，没有就添加
+        }
+    </script>
+</body>
+
+</html>

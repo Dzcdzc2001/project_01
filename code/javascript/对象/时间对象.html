@@ -99,6 +99,24 @@
         <div class="time_log" style="transform: rotate(270deg);">12</div>
     </div>
     <script>
+        var timeLogEle = document.querySelector(".time_log");
+        for(let i=0;i<12;i++){
+            
+        }
+        // js里的时间对象  ： js提供一个预定义对象可以用于操作时间；
+
+        // 创建时间对象：var date = new Date();
+        // 默认获取的时间是 本机的时间；
+        // 时间对象内的方法
+        // 获取年 date.getFullYear();
+        // 获取月 date.getMonth(); //注意：月份是从 0-11
+        // 获取日 date.getDate();
+        // 获取星期 date.getDay();
+        // 获取时 date.getHours();
+        // 获取分 date.getMinutes();
+        // 获取秒 date.getSeconds();
+        // 获取毫秒 date.getMilliseconds();
+        // 获取时间戳 date.getTime(); //获取的时间距离 1970年 1月 1日 0时0分0秒 的毫秒数
         function clock() {
             var hourPoint = document.querySelector(".point_h");
             var minutePoint = document.querySelector(".point_m");
