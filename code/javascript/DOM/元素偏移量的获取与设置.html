@@ -36,16 +36,16 @@
     <script>
         var conEle = document.querySelector(".container")
         var boxEle = document.querySelector(".block")
-        //获取内联样式 getComputedStyle
+        //获取内联和外链样式 getComputedStyle()
         // console.log(getComputedStyle(conEle).backgroundColor);
 
         //获取元素偏移量，无法设置
-        console.log(boxEle.offsetLeft)//相对于父级
+        console.log(boxEle.offsetLeft)//相对于父级左边偏移量，offsetTop相对于父级上边偏移量
         // boxEle.offsetLeft+=10;
         // console.log(boxEle.offsetLeft)
         // console.log(boxEle.offsetWidth)//自身宽度
         // console.log(boxEle.offsetHeight)//自身宽度
-        console.log(boxEle.clientLeft)//相对于自身
+        console.log(boxEle.clientLeft)//相对于自身左边偏移量
         // boxEle.clientLeft+=10;
         // console.log(boxEle.clientLeft)
 
