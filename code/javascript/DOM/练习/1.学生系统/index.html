@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 引入外部的css文件使用 -->
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="title">学生系统</div>
+        <!-- 填写学生的信息 -->
+        <div id="form">
+            <p>姓名<input id="username" type="text" value="张三" /></p>
+            <p>年龄<input id="age" type="text" value="21" /></p>
+            <p>性别
+                <select id="gender">
+                    <option>男</option>
+                    <option>女</option>
+                    <option>你猜</option>
+                </select>
+            </p>
+            <p>
+                <input type="button" value="添加" id="addBtn" />
+                <input type="button" value="排序" id="sortBtn" />
+            </p>
+        </div>
+        <!-- table:表格（行，列）
+            有thead tbody tfoot 标准表格的写法  通常来说写表格不需要这三个
+        -->
+        <table id="table">
+            <thead>
+                <!-- tr:一行数据  th:专门用来显示表头（默认加粗，居中） -->
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<script>
+
+    //1.获取添加按钮，绑定事件
+    var addBtn = document.querySelector("#addBtn");
+    var sortBtn = document.querySelector("#sortBtn");
+    // 创建对象数组存放元素
+    var objArr = [];
+    addBtn.onclick = function () {
+        //2.获取到填写的每个需要用的数据
+        var username = document.querySelector("#username").value;
+        var age = document.querySelector("#age").value;
+        var gender = document.querySelector("#gender").value;
+
+        //3.通过document创建一个tr元素
+        var trEle = document.createElement("tr");
+
+        //4.给tr添加好4个td数据
+        trEle.innerHTML = "<td>" + username + "</td><td>" + age + "</td><td>" + gender + "</td><td style='text-align: center;'><button>删除</button></td>"
+        //给删除按钮绑定事件
+        trEle.children[3].children[0].onclick = function () {
+            this.parentElement.parentElement.remove();
+            objArr = Array.from(tbodyEle.children);
+        }
+
+        //5.再把tr添加到tbody里面
+        var tbodyEle = document.querySelector('tbody')
+        tbodyEle.appendChild(trEle);
+        //刷新objarr
+        objArr = Array.from(tbodyEle.children);
+        // console.dir(tbodyEle.children);
+    }
+    sortBtn.onclick = function () {
+        var tbodyEle = document.querySelector('tbody');
+        //初始化tbody里的元素
+        tbodyEle.innerHTML = "";
+
+        //对数据按照年龄排序
+        objArr.sort(function (a, b) { return parseInt(b.children[1].innerText) - parseInt(a.children[1].innerText); });
+
+        //将数据逐行添加到tbody里
+        objArr.forEach(function (item) {
+            tbodyEle.appendChild(item);
+        });
+    }
+
+
+</script>
+
+</html>

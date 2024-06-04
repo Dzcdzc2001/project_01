@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .red{
+        .red {
             background-color: red;
         }
     </style>
 </head>
+
 <body>
     <!-- <ul class="myul">
         <li>111</li>
@@ -17,7 +19,7 @@
         <li>333</li>
         <span>qwer</span>
     </ul> -->
-    <ul class="myul">
+    <ul class="myul" style="list-style: none;">
         <li><button>换色</button></li>
         <li><button>换色</button></li>
         <li><button>换色</button></li>
@@ -30,14 +32,16 @@
         //子节点的设置
         // myul.childNodes[1].style.backgroundColor="red";
 
-        var myul=document.querySelector(".myul");
-        for(let i=0;i<myul.children.length;i++){
-            myul.children[i].firstChild.onclick=function(){
+        var myul = document.querySelector(".myul");
+        for (let i = 0; i < myul.children.length; i++) {
+            myul.children[i].firstChild.onclick = function () {
                 myul.children[i].firstChild.parentElement.classList.toggle("red");
             }
             // console.log(myul.children[i].firstChild)
         }
-        
+        //上一个兄弟节点的获取 
+        console.log(myul.children[1].previousSibling)
     </script>
 </body>
+
 </html>

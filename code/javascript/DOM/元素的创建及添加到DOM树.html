@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: aqua;
+        }
+        td{
+            width: 80px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // //元素的创建
+        // var ele = document.createElement("h1");
+        // var bodyEle=document.querySelector("body");
+        // ele.innerText="我是添加的标题1"
+        // //将新建的元素添加到DOM树中
+        // bodyEle.appendChild(ele);
+
+        // document.onclick=function(){
+        //     //通过父级移除子级
+        //     bodyEle.removeChild(ele);
+        //     //自身移除
+        //     ele.remove();
+        // }
+
+        var bodyEle = document.querySelector("body");
+        var containerEle = document.createElement("div");
+        var inputNameEle = document.createElement("input");
+        var inputAgeEle = document.createElement("input");
+        var selectSexEle = document.createElement("select");
+        var maleEle = document.createElement("option");
+        var femaleEle = document.createElement("option");
+        var addEle = document.createElement("button");
+        var removeEle = document.createElement("button");
+        var tableEle = document.createElement("table");
+        
+        bodyEle.appendChild(containerEle);
+        containerEle.appendChild(document.createTextNode("姓名："));
+        containerEle.appendChild(inputNameEle);
+        containerEle.appendChild(document.createElement("br"));
+        containerEle.appendChild(document.createTextNode("年龄："));
+        containerEle.appendChild(inputAgeEle);
+        containerEle.appendChild(document.createElement("br"));
+        containerEle.appendChild(document.createTextNode("性别："));
+        containerEle.appendChild(selectSexEle);
+        selectSexEle.appendChild(maleEle);
+        selectSexEle.appendChild(femaleEle);
+        containerEle.appendChild(document.createElement("br"));
+        containerEle.appendChild(addEle);
+        containerEle.appendChild(removeEle);
+        containerEle.appendChild(tableEle);
+
+        containerEle.className = "container";
+        maleEle.value="男";
+        maleEle.innerText="男";
+        femaleEle.value="女";
+        femaleEle.innerText="女";
+        addEle.innerText="添加";
+        removeEle.innerText="删除";
+
+        addEle.onclick=function(){
+            var tr= document.createElement("tr");
+        }
+        removeEle.onclick=function(){
+            
+        }
+    </script>
+</body>
+
+</html>

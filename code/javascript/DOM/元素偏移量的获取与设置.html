@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 700px;
+            height: 600px;
+            margin: 0 auto;
+            background-color: red;
+            position: relative;
+        }
+
+        .block {
+            width: 100px;
+            height: 100px;
+            /* border: 5px solid; */
+            background-color: green;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="block"></div>
+    </div>
+    <script>
+        var conEle = document.querySelector(".container")
+        var boxEle = document.querySelector(".block")
+        //获取内联样式 getComputedStyle
+        // console.log(getComputedStyle(conEle).backgroundColor);
+
+        //获取元素偏移量，无法设置
+        console.log(boxEle.offsetLeft)//相对于父级
+        // boxEle.offsetLeft+=10;
+        // console.log(boxEle.offsetLeft)
+        // console.log(boxEle.offsetWidth)//自身宽度
+        // console.log(boxEle.offsetHeight)//自身宽度
+        console.log(boxEle.clientLeft)//相对于自身
+        // boxEle.clientLeft+=10;
+        // console.log(boxEle.clientLeft)
+
+        //设置元素偏移量
+        // boxEle.style.left = "10px";
+        console.log(boxEle.offsetLeft)
+        //元素的移动
+        //绑定点击事件
+        boxEle.onclick = function () {
+            var ele = this;
+            var offset = 0;
+            //开启定时器，每10毫秒左偏移量加1px
+            var timer = setInterval(function () {
+                offset += 1;
+                ele.style.left = offset + "px";
+                //当元素到达最左边就停止
+                if(ele.offsetLeft+ele.offsetWidth===conEle.offsetWidth){
+                    clearInterval(timer);
+                }
+            }, 10)
+        }
+    </script>
+</body>
+
+</html>
