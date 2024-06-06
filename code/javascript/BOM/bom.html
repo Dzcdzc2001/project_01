@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .block {
+            width: 10px;
+            height: 1300px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">跳转</button>
+    <div class="block"></div>
+    <div id="aaa">aaa</div>
+    <script>
+        //BOM Browser Object Model 浏览器对象模型
+        console.log(location)
+        console.log(location.href)// 当前页面地址
+        console.log(location.search)
+        //跳转地址
+        document.querySelector(".btn").onclick = function () {
+            location.href="http://localhost:52330/code/javascript/BOM/bom.html?#aaa"
+        }
+        //通过search可以实现两个页面的数据传递
+    </script>
+</body>
+
+</html>

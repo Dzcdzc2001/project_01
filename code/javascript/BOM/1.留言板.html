@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h2,
+        p {
+            margin: 0;
+        }
+
+        .box {
+            margin: 30px auto;
+            width: 300px;
+        }
+
+        #user,
+        #message {
+            box-sizing: border-box;
+            width: 300px;
+            border: 1px solid #000;
+            padding: 10px;
+            height: 100px;
+            resize: none;
+            display: block;
+        }
+
+        #user {
+            padding: 0 10px;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+
+        #btn {
+            display: block;
+            margin: 10px auto;
+            width: 60%;
+            height: 40px;
+        }
+
+        #list {
+            border-top: 1px solid #000;
+            padding: 10px 0 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        #list li {
+            position: relative;
+            font: 14px/30px "宋体";
+            border-bottom: 1px solid #000;
+            padding: 0 15px;
+            overflow: hidden;
+        }
+
+        .clos {
+            position: absolute;
+            right: 5px;
+            top: 10px;
+        }
+
+        .clos2 {
+            position: absolute;
+            right: 5px;
+            top: 30px;
+        }
+
+        .replay {
+            position: absolute;
+            right: 5px;
+            top: 35px;
+        }
+
+        .mask {
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            opacity: .3;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+
+        .comfirm {
+            width: 200px;
+            height: 120px;
+            background: white;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            border-radius: 5px;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+            display: none;
+
+        }
+
+        .comfirm button {
+            /* position: absolute; */
+            /* right: 10px; */
+            float: right;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" id="user" value="小芳" />
+        <textarea id="message" placeholder="请填写留言内容..."></textarea>
+        <button id="btn">提交留言</button>
+        <!-- 留言列表 -->
+        <ul id="list">
+            <!-- 一个li就代表一行留言，删除肯定就是删除对应的li就行了 -->
+            <!-- <li style="height: auto">
+                <h2 class="user">小王说:</h2>
+                <p>呼叫无敌小明</p>
+
+                <a href="javascript:;" class="clos">删除</a>
+                <a href="javascript:;" class="clos2">回复</a>
+            </li> -->
+        </ul>
+    </div>
+
+    <script>
+        //提交留言功能实现
+        //获取元素，后面使用
+        var userInput = document.querySelector("#user")
+        var messageInput = document.querySelector("#message")
+        var btn = document.querySelector("#btn")
+        var listUl = document.querySelector("#list")
+
+        listUl.innerHTML = ''
+
+        //1.绑定事件
+        btn.onclick = function () {
+            var user = userInput.value;
+            var message = messageInput.value;
+            //判断留言内容是否为空
+            if (message) {
+                //2.创建li
+                var liEle = document.createElement("li");
+
+                //3.设置li的内容  (获取输入的值)
+                liEle.innerHTML = `<h2 class="user">${user}说:</h2>
+                <p>${message}</p>
+                <a href="javascript:;" class="clos">删除</a>
+                <a href="javascript:;" class="clos2">回复</a>
+                <p style='display:none'>
+                    <input class='reply'/>
+                    <button class='sure'>确认</button>
+                    <button class='cancel'>取消</button>   
+                </p>
+                `
+
+                //4.把设置好的li追加id为list的ul的子节点中
+                listUl.appendChild(liEle);
+
+                //5.清空留言输入框的内容
+                this.previousElementSibling.value = "";
+            }else{
+
+            }
+
+        }
+
+        //删除功能
+        //1.拿到li中的删除按钮,并且绑定事件
+        liEle.querySelector(".clos").onclick = function () {
+            //2.拿到this（此时this是删除按钮） 通过删除按钮拿到父对象，父对象就是li
+            this.parentElement.remove();
+        }
+
+        //回复功能 思路：回复功能需要input 2button  后面再用代码去加，很麻烦的，提前写好（隐藏起来）
+        //1.在设置li的内容，把input 2button影藏好
+
+        //2.给回复按钮绑定事件 
+        liEle.querySelector(".clos2").onclick = function () {
+            //3.把回复框显示出来  此时的this就是回复按钮，因为这个方式就是回复按钮触发的
+            this.nextElementSibling.style.display = 'block'
+
+        }
+        //点击确认按钮绑定事件
+        liEle.querySelector(".sure").onclick = function () {
+            //alert(1) 
+            //    前一个  元素   兄弟   value:获取值的属性
+            var reply = this.previousElementSibling.value
+
+            //先拿到回复的p元素
+            var pEle = this.parentElement;
+
+            //在给回复的p元素下面追加p元素（创建出来）
+            var newP = document.createElement('p');
+            newP.innerHTML = reply;
+            //追加到最后面显示回复                
+            liEle.append(newP)
+
+            //隐藏回复框和按钮
+            pEle.style.display = 'none';
+
+            //清空input的内容，修改的value
+            pEle.firstElementChild.value = '';
+
+        }
+
+        liEle.querySelector(".cancel").onclick = function () {
+
+            this.parentElement.style.display = 'none';
+        }
+
+    </script>
+</body>
+
+</html>

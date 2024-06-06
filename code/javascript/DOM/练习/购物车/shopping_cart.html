@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/gou.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+</head>
+
+<body>
+	<div class="gou_bar">
+		<div class="inner">
+			<a href="index.php"><img src="img/logo.png" /></a>
+			<ul class="bar_ul">
+				<li>我的购物车</li>
+				<li>确认订单信息</li>
+				<li>等待付款</li>
+				<li>订单执行</li>
+			</ul>
+		</div>
+
+	</div>
+
+	<div class="shopping">
+		<h4>保税区</h4>
+
+		<table id="cartTable">
+			<thead>
+				<tr>
+					<th><label><input class="check-all check" type="checkbox" />&nbsp;全选</label></th>
+					<th>商品信息</th>
+					<th>商品单价</th>
+					<th>数量</th>
+					<th>小计</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr>
+					<td class="checkbox"><input class="check-one check" type="checkbox" /></td>
+					<td class="goods"><img src="img/images/20150708112148lm2t0.jpg"
+							alt="" /><span>飞利浦新安怡卡通企鹅杯学饮杯7安士200ml 训练水杯 防漏带手柄（2件装）</span></td>
+					<td class="price">5999.88</td>
+					<td class="count"><span class="reduce"></span><input class="count-input" type="text"
+							value="1" /><span class="add">+</span></td>
+					<td class="subtotal">220.88</td>
+					<td class="operation"><span class="delete">删除</span></td>
+				</tr>
+				<tr>
+					<td class="checkbox"><input class="check-one check" type="checkbox" /></td>
+					<td class="goods"><img src="img/images/201509091748430829.jpg"
+							alt="" /><span>日本Merries花王新生儿纸尿裤S82</span></td>
+					<td class="price">388.50</td>
+					<td class="count"><span class="reduce"></span><input class="count-input" type="text"
+							value="1" /><span class="add">+</span></td>
+					<td class="subtotal">388.50</td>
+					<td class="operation"><span class="delete">删除</span></td>
+				</tr>
+				<tr>
+					<td class="checkbox"><input class="check-one check" type="checkbox" /></td>
+					<td class="goods"><img src="img/images/3.jpg" alt="" /><span>Sony/索尼 DSC-WX300</span></td>
+					<td class="price">148.50</td>
+					<td class="count"><span class="reduce"></span><input class="count-input" type="text"
+							value="1" /><span class="add">+</span></td>
+					<td class="subtotal">1428.50</td>
+					<td class="operation"><span class="delete">删除</span></td>
+				</tr>
+				<tr>
+					<td class="checkbox"><input class="check-one check" type="checkbox" /></td>
+					<td class="goods"><img src="img/images/201608081427026196.jpg"
+							alt="" /><span>韩国MOMMA手工陶瓷奶瓶（220ml,320ml）+保温夜光喂奶灯套装 多款颜色图案随机发货 </span></td>
+					<td class="price">640.60</td>
+					<td class="count"><span class="reduce"></span><input class="count-input" type="text"
+							value="1" /><span class="add">+</span></td>
+					<td class="subtotal">640.60</td>
+					<td class="operation"><span class="delete">删除</span></td>
+				</tr> -->
+			</tbody>
+		</table>
+		<div class="foot" id="foot">
+			<label class="fl select-all"><input type="checkbox" class="check-all check" />&nbsp;全选</label>
+			<a class="fl delete" id="deleteAll" href="javascript:;">批量删除</a>
+
+			<div class="fr closing">立即购买</div>
+			<div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
+			<div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span
+					class="arrow up">︽</span><span class="arrow down">︾</span></div>
+			<div class="selected-view">
+				<div id="selectedViewList" class="clearfix">
+				</div>
+				<span class="arrow">◆<span>◆</span></span>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="last">
+		<h5 class="last_h5">
+			<img src="img/trduty_bg.jpg" />
+			个人邮递进口物品清关税收解读
+		</h5>
+		<div class="last_bot">
+			<ul>
+				<li class="last_li0">个人邮递进境物品须界定为<a class="last_bot_sp1" href="">个人自用</a></li>
+				<li><span class="last_li1">免征税</span>奶粉线征收跨境税，<span
+						class="last_bot_sp2">取消50元以下免征额。美国线、快速线征收行邮税，50元以下免征额仍保留；</span></li>
+				<li><span
+						class="last_li2">非个人清关</span>奶粉线单次交易限值为人民币2000元（不分单件多件），个人年度交易限值为人民币20000元；美国线、快速线单个包裹限值≤1000（单件不可分割物品除外）；美国线单件不可物品限值≤5000；
+				</li>
+				<li><span class="last_li3">被税</span>自理关税；如果您的货物在海关被税，海关或海淘橙官方将通知您支付税费；我们不会预收关税，请您只需选择海淘橙官方支付方式进行税务的缴纳。
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="BOTTOM">
+		<div class="BB">
+			<img src="img/bot_slogan.png" alt="" />
+		</div>
+	</div>
+	<!--死亡线     死亡线                        死亡线     死亡线                        死亡线     死亡线                        死亡线     死亡线                        死亡线     死亡线                        死亡线     死亡线                        死亡线     死亡线                        -->
+	<div class="BigBottom">
+		<div class="Big">
+			<div class="Big1">
+				<p><a style="color: white;" href="#">海淘橙</a></p>
+				<p class="Big1a"><a href="#">关于我们</a></p>
+				<p class="Big1a"><a href="#">免责声明</a></p>
+				<p class="Big1a"><a href="#">联系我们</a></p>
+			</div>
+			<div class="Big2">
+				<p><a style="color: white;" href="#">海淘橙</a></p>
+				<p class="Big1a"><a href="#">意见/建议</a></p>
+				<p class="Big1a"><a href="#">海淘购物</a></p>
+				<p class="Big1a"><a href="#">友情链接</a></p>
+			</div>
+			<div class="Big3">
+				<p><a style="color: white;" href="#">帮助中心</a></p>
+				<p class="Big1a"><a href="#">新手指南</a></p>
+				<p class="Big1a"><a href="#">常见问题</a></p>
+				<p class="Big1a"><a href="#">正品保证</a></p>
+				<p class="Big1a"><a href="#">物流配送</a></p>
+			</div>
+			<div class="Big4">
+				<p><a style="color: white;" href="#">资讯频道</a></p>
+				<p class="Big1a"><a href="#">海淘咨询</a></p>
+				<p class="Big1a"><a href="#">网站公告</a></p>
+				<p class="Big1a"><a href="#">网站地图</a></p>
+			</div>
+			<div class="Big5"></div>
+			<div class="Big6"></div>
+			<div class="Big7">
+				<span class="Big7a">微信订阅号</span>
+				<span class="Big7b">扫一扫有惊喜</span>
+				<img src="img/emw1.png" alt="" />
+			</div>
+			<div class="Big7">
+				<span class="Big7a">微信订阅号</span>
+				<span class="Big7b">扫一扫有惊喜</span>
+				<img src="img/emw1.png" alt="" />
+			</div>
+			<div class="Big8"></div>
+			<div class="Big9"></div>
+			<div class="Big10">
+				<p class="Big10a">关注我们</p>
+				<img src="img/xlkjk.png" alt="" />
+				<p class="Big10c">邮件订阅</p>
+				<input class="Big10d" type="text" placeholder="请输入您的邮箱地址，订阅最新优惠" />
+				<div class="Big10e">订阅</div>
+			</div>
+			<div class="Big11"></div>
+			<div class="Big12"></div>
+			<div class="Big13">Copyright 2012-2016 海淘橙 haitaocheng.com. All Rights Reserved.粤ICP备14073754号-1</div>
+		</div>
+	</div>
+
+	<!--右侧购物栏-->
+	<div class="right_l">
+		<div class="regist_wrap">
+			<div class="regist"></div>
+		</div>
+		<div class="regist_wrap2">
+			<div class="regist2"></div>
+			<p>一键购</p>
+		</div>
+		<div class="regist_wrap3">
+			<div class="regist3"></div>
+			<p>购物车</p>
+		</div>
+		<div class="regist_wrap4">
+			<div class="regist4"></div>
+		</div>
+		<div class="regist_wrap5">
+			<div class="regist5"></div>
+		</div>
+		<div class="regist_wrap6">
+			<div class="regist6"></div>
+		</div>
+		<div class="regist_wrap7">
+			<div class="regist7"></div>
+		</div>
+
+		<div class="regist_wrap8">
+			<div class="regist8"></div>
+		</div>
+	</div>
+	<script>
+		// `<td class="checkbox"><input ${item.ischecked?'checked':''} class="check-one check" type="checkbox" /></td>
+		// 			<td class="goods"><img src="${item.imgurl}"
+		// 					alt="" /><span>${item.pname}</span></td>
+		// 			<td class="price">${item.price}</td>
+		// 			<td class="count"><span class="reduce">-</span><input class="count-input" type="text"
+		// 					value="${item.num}" /><span class="add">+</span></td>
+		// 			<td class="subtotal">${item.num * item.price}</td>
+		// 			<td class="operation"><span class="delete">删除</span></td>`
+
+		// 数据描述购物车产品信息
+		var arr = [{
+			pname: "飞利浦新安怡卡通企鹅杯学饮杯7安士200ml 训练水杯 防漏带手柄（2件装）",
+			price: "588",
+			num: 1,
+			imgurl: "img/images/20150708112148lm2t0.jpg",
+			ischecked: false   // false 代表没有选中；
+		}, {
+			pname: "日本Merries花王新生儿纸尿裤S82",
+			price: "388",
+			num: 1,
+			imgurl: "img/images/201509091748430829.jpg",
+			ischecked: false   // false 代表没有选中；
+		}, {
+			pname: "Sony/索尼 DSC-WX300",
+			price: "148",
+			num: 1,
+			imgurl: "img/images/3.jpg",
+			ischecked: false   // false 代表没有选中；
+		}, {
+			pname: "韩国MOMMA手工陶瓷奶瓶（220ml,320ml）+保温夜光喂奶灯套装 多款颜色图案随机发货",
+			price: "640",
+			num: 1,
+			imgurl: "img/images/201608081427026196.jpg",
+			ischecked: false   // false 代表没有选中；
+		}]
+
+		var tbodyEle = document.querySelector("#cartTable tbody");
+
+		function rander(arr) {
+			// <tr>
+			// 	<td class="checkbox"><input class="check-one check" type="checkbox" /></td>
+			// 	<td class="goods"><img src="img/images/20150708112148lm2t0.jpg"
+			// 		alt="" /><span>飞利浦新安怡卡通企鹅杯学饮杯7安士200ml 训练水杯 防漏带手柄（2件装）</span></td>
+			// 	<td class="price">5999.88</td>
+			// 	<td class="count"><span class="reduce"></span><input class="count-input" type="text"
+			// 		value="1" /><span class="add">+</span></td>
+			// 	<td class="subtotal">220.88</td>
+			// 	<td class="operation"><span class="delete">删除</span></td>
+			// </tr>
+			tbodyEle.innerHTML = "";
+			arr.forEach(function (item, key) {
+				var trEle = document.createElement("tr");
+				trEle.innerHTML =
+					`<td class="checkbox"><input ${item.ischecked ? 'checked' : ''} class="check-one check" type="checkbox" /></td>
+					<td class="goods"><img src="${item.imgurl}"
+							alt="" /><span>${item.pname}</span></td>
+					<td class="price">${item.price}</td>
+					<td class="count"><span class="reduce">-</span><input class="count-input" type="text"
+							value="${item.num}" /><span class="add">+</span></td>
+					<td class="subtotal">${item.num * item.price}</td>
+					<td class="operation"><span class="delete">删除</span></td>`
+
+				tbodyEle.appendChild(trEle);
+				statistics();
+				//事件绑定，勾选
+				trEle.querySelector(".check-one").onclick = function () {
+					item.ischecked = this.checked;
+					checkedAll();
+				}
+				//事件绑定，减少数量
+				trEle.querySelector(".reduce").onclick = function () {
+					if (item.num > 1) {
+						item.num--;
+					}
+					rander(arr);
+				}
+				//事件绑定，增加数量
+				trEle.querySelector(".add").onclick = function () {
+					item.num++;
+					rander(arr);
+				}
+				//事件绑定，删除
+				trEle.querySelector(".delete").onclick = function () {
+					arr.splice(key, 1);
+					rander(arr);
+				}
+			});
+		}
+		rander(arr);
+		//事件绑定，全选
+		document.querySelectorAll(".check-all").forEach(function (item) {
+			item.onclick = function () {
+				if (this.checked) {
+					arr.forEach(function (item) {
+						item.ischecked = true;
+					})
+					checkedAll();
+				} else {
+					arr.forEach(function (item) {
+						item.ischecked = false;
+					})
+					checkedAll();
+				}
+			}
+		})
+		//事件绑定，清空购物车
+		document.querySelector("#deleteAll").onclick = function () {
+			arr = arr.filter(function (item) {
+				return !item.ischecked;
+			})
+			rander(arr);
+		}
+		//统计
+		function statistics() {
+			// <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
+			// <div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span
+			// 		class="arrow up">︽</span><span class="arrow down">︾</span></div>
+			var count = 0;
+			var price = 0;
+			arr.forEach(function (item) {
+				if (item.ischecked) {
+					count += item.num;
+					price += item.price * item.num;
+				}
+			})
+			document.querySelector("#selectedTotal").innerHTML = count;
+			document.querySelector("#priceTotal").innerHTML = price;
+		}
+		//全选触发
+		function checkedAll() {
+			var flag = arr.every(function (item) {
+				return item.ischecked;
+			})
+			if (flag) {
+				document.querySelectorAll(".check-all").forEach(function (item) {
+					item.checked = true;
+				})
+			} else {
+				document.querySelectorAll(".check-all").forEach(function (item) {
+					item.checked = false;
+				})
+			}
+			rander(arr);
+		}
+	</script>
+</body>
+
+</html>

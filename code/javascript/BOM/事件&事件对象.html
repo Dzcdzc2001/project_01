@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .block {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: burlywood;
+            position: absolute;
+            left: 800px;
+            top: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p class="block"></p>
+    </div>
+    <div class="box2"></div>
+    <script>
+        //事件
+        //事件发生的位置
+        //鼠标事件
+        //onclick
+        //ondblclick
+        //oncontextmenu
+        //onmousedown
+        //onmouseup
+        //onwheel
+        //onmousemove
+        
+
+        var boxEle = document.querySelector(".box");
+        console.dir(boxEle)
+        var blockEle = document.querySelector(".block");
+        // var box2Ele = document.querySelector(".box2");
+        // boxEle.onmousedown = function (e) {
+        //     document.onmousemove = function (event) {
+
+
+        //         // console.log(boxEle.offsetLeft + 100)
+        //         if (boxEle.offsetLeft + 100 <= box2Ele.offsetLeft||boxEle.offsetTop + 100 <= box2Ele.offsetTop||boxEle.offsetLeft - 100 >= box2Ele.offsetLeft||boxEle.offsetTop - 100 >= box2Ele.offsetTop) {
+        //             boxEle.style.top = event.clientY - e.offsetY + "px";
+        //             boxEle.style.left = event.clientX - e.offsetX + "px";
+        //         }
+        //     }
+        // }
+        // document.onmouseup = function () {
+        //     document.onmousemove = function () { };
+        // }
+
+        //键盘事件
+        //onkeydown
+        //onkeup
+        //onkeypress
+        // var dis = "left";
+        // var num = 1;
+        // document.onkeydown = function (e) {
+        //     console.log(e);
+
+        //     switch (e.keyCode) {
+        //         case 38:
+        //             dis = "top";
+        //             num = -1;
+        //             break;
+        //         case 40:
+        //             dis = "top";
+        //             num = 1;
+        //             break;
+        //         case 37:
+        //             dis = "left";
+        //             num = -1;
+        //             break;
+        //         case 39:
+        //             dis = "left";
+        //             num = 1;
+        //             break;
+        //     }
+        // }
+        // setInterval(() => {
+        //     boxEle.style[dis] = parseInt(getComputedStyle(boxEle)[dis]) + num + "px";
+        // }, 10);
+
+        // boxEle.onclick = function (e) {
+        //     console.log(e.target.nodeName)
+        // }
+
+        //表单事件
+        // boxEle.addEventListener("click",function(){
+        //     console.log(111)
+        // })
+        // boxEle.addEventListener("click",function(){
+        //     console.log(222)
+        // })
+    </script>
+</body>
+
+</html>

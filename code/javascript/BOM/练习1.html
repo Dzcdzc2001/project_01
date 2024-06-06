@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 450px;
+            height: 350px;
+            margin: 100px auto;
+            /* border:  */
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            /* display: flex;
+            flex-direction: column; */
+            padding: 50px 0 50px 100px;
+            color: #89878f;
+
+        }
+
+        .error {
+            display: none;
+            font-size: 12px;
+        }
+        .register{
+            width: 120px;
+            height: 40px;
+            background-color: #408ce9;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 20px;
+            margin-left: 140px;
+        }
+        .verificationCode{
+            width: 80px;
+        }
+        #agreement{
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+        }
+        .verificationImg{
+            width: 62.5px;
+            height: 20px;
+            /* transform: scale(.5); */
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p><span style="color: #e8b593;">*</span>邮箱地址：<input type="text" name="emailAddress" class="emailAddress" placeholder="您的登录邮箱"><span
+                class="error"></span></p>
+        <p><span style="color: #e8b593;">*</span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password"
+                name="password" class="password" placeholder="6位以上的数字字母组合"><span class="error"></span></p>
+        <p><span style="color: #e8b593;">*</span>确认密码：<input type="password" name="confirm" class="confirm" placeholder="请再输入一次密码！"><span
+                class="error"></span></p>
+        <p><span style="color: #e8b593;">*</span>手机号码：<input type="text" name="phoneNumber" class="phoneNumber" placeholder="建议使用常用手机"><span
+                class="error"></span></p>
+        <p>&nbsp;&nbsp;姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" name="username" class="username" placeholder="请输入您的姓名"></p>
+        <p>&nbsp;&nbsp;地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：<input type="text" name="address" class="address" placeholder="请输入地址"></p>
+        <p><span style="color: #e8b593;">*</span>&nbsp;验&nbsp;证&nbsp;码：<input type="text" name="verificationCode"
+                class="verificationCode" placeholder="请输入验证码"> <img src="./vertifi.png" class="verificationImg"><span class="error"></span></p>
+        <p><input type="checkbox" name="agreement" id="agreement" ><span style="font-size: 14px;color: #345790;font-weight: 600;vertical-align: middle;">我同意用户协议</span></p>
+        <p><button class="register">注册</button></p>
+
+    </div>
+
+    <script>
+        var emailAddressEle = document.querySelector(".emailAddress");
+        var passwordEle = document.querySelector(".password");
+        var confirmEle = document.querySelector(".confirm");
+        var phoneNumberEle = document.querySelector(".phoneNumber");
+        var usernameEle = document.querySelector(".username");
+        var addressEle = document.querySelector(".address");
+        var verificationCodeEle = document.querySelector(".verificationCode");
+        var agreementEle = document.querySelector("#agreement");
+        var registerEle = document.querySelector(".register");
+
+        function judgeTip(ele,bool, passedTip, failedTip) {
+            if (bool) {
+                ele.parentElement.querySelector(".error").innerText = failedTip;
+                ele.parentElement.querySelector(".error").style.color = "red"
+                ele.parentElement.querySelector(".error").style.display = "inline";
+                // console.log(this.parentElement.querySelector(".error"))
+            } else {
+                ele.parentElement.querySelector(".error").innerText = passedTip;
+                ele.parentElement.querySelector(".error").style.color = "greenyellow";
+                ele.parentElement.querySelector(".error").style.display = "inline";
+            }
+        }
+        emailAddressEle.onblur = function () {
+            judgeTip(this,!/^\w+\@\w+\.com$/.test(emailAddressEle.value), " 正确！", " 格式错误！");
+        }
+        passwordEle.onblur = function () {
+            judgeTip(this,!(/\d/.test(passwordEle.value) && /[a-z|A-Z]/.test(passwordEle.value) && /[0-9|a-z|A-Z]{6}/.test(passwordEle.value)), " 正确！", " 格式错误！");
+        }
+        confirmEle.onblur = function () {
+            judgeTip(this,passwordEle.value !== confirmEle.value, " 正确！", " 密码不一致！");
+        }
+        phoneNumberEle.onblur = function () {
+            judgeTip(this,!phoneNumberEle.value, " 正确！", " 电话号码不能为空！");
+        }
+        verificationCodeEle.onblur = function () {
+            judgeTip(this,verificationCodeEle.value!=="MCH2", " 正确！", " 验证码不能为空！");
+        }
+        registerEle.onclick = function () {
+            if (agreementEle.checked) {
+                if (/^\w+\@\w+\.com$/.test(emailAddressEle.value) && (/\d/.test(passwordEle.value) && /[a-z|A-Z]/.test(passwordEle.value) && /[0-9|a-z|A-Z]{6}/.test(passwordEle.value)) && passwordEle.value === confirmEle.value && phoneNumberEle.value && verificationCodeEle.value=="MCH2" && agreementEle.checked) {
+                    location.href = `./练习1_purpose.html?${emailAddressEle.name}=${emailAddressEle.value}&${passwordEle.name}=${passwordEle.value}&${phoneNumberEle.name}=${phoneNumberEle.value}&${usernameEle.name}=${usernameEle.value}&${addressEle.name}=${addressEle.value}`
+                } else {
+                    alert("注册信息不完整！！！");
+                }
+            } else {
+                alert("未同意用户协议！")
+            }
+            // location.href=`./练习1_purpose.html?${emailAddressEle.name}=${emailAddressEle.value}&${passwordEle.name}=${passwordEle.value}&${phoneNumberEle.name}=${phoneNumberEle.value}&${usernameEle.name}=${usernameEle.value}&${addressEle.name}=${addressEle.value}`
+            // console.log(emailAddressEle.name)
+        }
+    </script>
+</body>
+
+</html>

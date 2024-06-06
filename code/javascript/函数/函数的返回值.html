@@ -33,6 +33,7 @@
         // document.write(printYear(1000, 2000));
         //当没有设置函数返回值时，默认返还undefined
         var broadcastList = [];
+        var radio;
         function broadcast() {
             var len = broadcastList.length;
             for (var i = 0; i < len; i++) {
@@ -40,16 +41,28 @@
             }
             // console.log("broadcast被调用");
         }
+        // function bindFnc(fn1, fn2) {
+        //     fn1(0,fn2);
+
+        // }
+        // const fn_1 = function(flag,fnc) {
+        //     if(fnc)
+        //     broadcastList.push(fnc);
+        //     if(flag){
+        //         broadcast();
+        //     }  
+        // }
+        var fn_1 = function () {
+            console.log("fn_1被调用")
+            radio=fn_1;
+        };
         function bindFnc(fn1, fn2) {
-            fn1(0,fn2);
-            
-        }
-        const fn_1 = function(flag,fnc) {
-            if(fnc)
-            broadcastList.push(fnc);
-            if(flag){
-                broadcast();
-            }  
+            broadcastList.push(fn2);
+            setInterval(() => {
+                if (radio == fn1) {
+                    broadcast();
+                }
+            }, 1)
         }
         function fn_2() {
             console.log("fn_2被调用");
@@ -61,9 +74,14 @@
             console.log("fn_4被调用");
         }
         bindFnc(fn_1, fn_2);
-        bindFnc(fn_1, fn_3);
-        bindFnc(fn_1, fn_4);
-        fn_1(1);
+        // bindFnc(fn_1, fn_3);
+        // bindFnc(fn_1, fn_4);
+        // fn_1(1);
+        setTimeout(() => {
+            fn_1();
+            radio=0;
+        }, 2000);
+
         // bindFnc(fn_1,fn_3);
     </script>
 </body>

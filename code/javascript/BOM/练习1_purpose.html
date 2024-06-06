@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>注册成功！</h1>
+    </div>
+    <script>
+        var conEle=document.querySelector(".container")
+        var registerInfList=[];
+        //?emailAddress=123@123.com&password=123456&phoneNumber=123&username=111&address=111
+        var str = location.search;
+        // console.log(str)
+        str = str.substring(1);
+        // console.log(str)
+        var arr = str.split("&")
+        // console.log(arr)
+        var registerInf = {};
+        for (let key in arr) {
+            registerInf[arr[key].split("=")[0]] = arr[key].split("=")[1];
+        }
+        // console.log(registerInf)
+        registerInfList.push(registerInf);
+
+        for (let key in registerInf) {
+            var ele=document.createElement("p");
+            ele.innerText=`${key}：${registerInf[key]}`;
+            conEle.appendChild(ele);          
+        }
+        document.onclick=function(){
+            history.back();
+        }
+    </script>
+</body>
+
+</html>

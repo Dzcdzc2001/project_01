@@ -1,0 +1,108 @@
+
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+body{
+	background: #f3f3f3;
+}
+.gou_bar{
+	width: 100%;
+	min-width: 960px;
+	margin: auto;
+	
+}
+.inner{
+	margin: auto;
+	width: 1200px;
+	height: 80px;
+	overflow: hidden;
+}
+.bar_ul{
+	overflow: hidden;
+	float: right;
+	width: 428px;
+	height: 45px;
+	margin-top: 20px;
+	background: url(../img/orderstep_order_24.png)0px 0px;
+}
+.bar_ul li{
+	float: left;
+	width: 107px;
+	height: 23px;
+	font-size: 12px;
+	text-align: center;
+}
+.bar_ul li:nth-child(1){
+	text-align: left;
+}
+.bar_ul li:nth-child(2){
+	text-align: left;
+}
+.inner a{
+	
+	float: left;
+	
+}
+.inner a img{
+	
+	width: 196px;
+	height: 78px;
+	
+}
+.shopping{
+	width: 1200px;
+	margin: auto;
+}
+h4{
+	margin-bottom: 30px;
+}
+.last_h5 img{
+	width: 20px;
+	height: 20px;
+	
+}
+.last_h5{
+	font-size: 14px;
+	font-weight: bolder;
+}
+.last{
+	width: 1200px;
+	margin: auto;
+	margin-top: 252px;
+}
+.last_bot{
+	width: 1200px;
+	height: 122px;
+	background: #f1f0f0;
+	margin-top: 12px;
+}
+.last_bot ul li{
+	font-size: 12px;
+	line-height: 1.8;
+}
+.last_bot ul{
+	padding: 15px 0 15px 35px;;
+}
+.last_li0{
+	text-decoration: underline;
+}
+.last_li1{
+	padding-right: 54px;
+}
+.last_li2{
+	padding-right: 30px;
+}
+.last_li3{
+	padding-right: 65px;
+}
+.last_bot_sp1{
+	color: #fe6600;
+}
+.last_bot_sp2{
+	text-decoration: underline;
+}
