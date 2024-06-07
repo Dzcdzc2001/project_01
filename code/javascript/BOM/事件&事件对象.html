@@ -48,7 +48,7 @@
         //onmouseup
         //onwheel
         //onmousemove
-        
+
 
         var boxEle = document.querySelector(".box");
         console.dir(boxEle)
@@ -106,12 +106,47 @@
         // }
 
         //表单事件
+        //oninput
+        //onselect
+        //onchange
+        //onsubmit
+        //onreset
+        //onfocus
+        //onblur
+        //oninvalid
+
+        //ontransitionend 在过渡完成时触发
+        boxEle.onclick = function () {
+            boxEle.style.transition = "all 2s ";
+            boxEle.style.left = "500px";
+        }
+        var num = 0;
+        boxEle.ontransitionend = function () {
+            num++;
+            if(num==1){
+                boxEle.style.top="500px";
+            }else if(num==2){
+                boxEle.style.left = "0px";
+            }else{
+                boxEle.style.top="0px";
+            }
+            console.log(num);
+        }
+        //事件的监听绑定
         // boxEle.addEventListener("click",function(){
         //     console.log(111)
         // })
         // boxEle.addEventListener("click",function(){
         //     console.log(222)
         // })
+
+        //事件的捕获
+        //当事件触发时，会从最顶层逐级向下捕获，直到捕获到最小的触发目标
+        //事件的冒泡
+        //当事件触发时，先触发最小的目标，再逐渐向上触发
+
+        //事件的委托
+        //把事件委托给上级，
     </script>
 </body>
 

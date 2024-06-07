@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+  <section id="wrap">
+    <h2 class="title">百度音乐榜单</h2>
+    <ul id="list">
+      <!-- <li>
+        <input type="checkbox"  />
+        <span>第一条信息</span>
+        <a href="javascript:;" class="collect">收藏</a>
+        <a href="javascript:;" class="cancelCollect">取消收藏</a>
+        <a href="javascript:;" class="remove">删除</a>
+      </li> -->
+    </ul>
+    <footer class="footer">
+      <!-- 勾选就是有 checked 属性  ，非勾选就是没有checked属性 -->
+      <label><input type="checkbox" id="checkAll" />全选/全不选</label>
+
+    </footer>
+  </section>
+  <script>
+
+
+
+    var data = [
+      {
+        id: 0,
+        title: "残酷月光 - 费启鸣",
+        checked: true,
+        collect: true
+      }, {
+        id: 1,
+        title: "兄弟 - 艾热",
+        checked: false,
+        collect: false
+      }, {
+        id: 2,
+        title: "毕生 - 夏增祥",
+        checked: false,
+        collect: true
+      }, {
+        id: 3,
+        title: "公子向北去 - 李春花",
+        checked: false,
+        collect: false
+      }, {
+        id: 4,
+        title: "战场 - 沙漠五子",
+        checked: true,
+        collect: false //是否收藏 true 收藏 false 没有收藏
+      }
+    ];
+
+    var ulEle = document.querySelector("#list");
+    var checkAllEle = document.querySelector("#checkAll");
+
+    function rander() {
+      ulEle.innerHTML = '';
+      data.forEach(function (item) {
+        var liEle = document.createElement("li");
+        liEle.innerHTML = `   
+        <input type="checkbox" ${item.checked ? "checked" : ""} />
+        <span>${item.title}</span>
+        <a href="javascript:;" class="collect">收藏</a>
+        <a href="javascript:;" class="cancelCollect">取消收藏</a>
+        <a href="javascript:;" class="remove">删除</a>`;
+        ulEle.appendChild(liEle);
+
+        liEle.firstElementChild.addEventListener("click", function () {
+          item.checked = this.checked;
+          isCheckedAll();
+        })
+
+
+      })
+    }
+    checkAllEle.addEventListener("click", function () {
+      // console.log(this.checked)
+      data.forEach(function (item) {
+        item.checked = checkAllEle.checked;
+        // console.log(item.checked)
+      })
+      rander();
+    })
+
+    function isCheckedAll() {
+      var flag = data.every(function (item) {
+        return item.checked;
+      })
+      if (flag) {
+        checkAllEle.checked = true;
+      } else {
+        checkAllEle.checked = false;
+      }
+    }
+
+    rander();
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .box {
+      width: 450px;
+
+      margin: 50px;
+      display: flex;
+      flex-direction: column;
+
+      position: relative;
+    }
+
+    .box>.show {
+      width: 450px;
+      height: 450px;
+      border: 1px solid #333;
+      position: relative;
+    }
+
+    .box>.show>.mask {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+      opacity: .4;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+
+      display: none;
+    }
+
+    .box>.list {
+      width: 100%;
+      flex: 1;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      box-sizing: border-box;
+      padding: 20px;
+    }
+
+    .box>.list>p {
+      width: 54px;
+      height: 54px;
+      border: 1px solid #333;
+      margin-right: 10px;
+    }
+
+    .box>.list>p.active {
+      border-color: red;
+    }
+
+    .box>.enlarge {
+      width: 400px;
+      height: 400px;
+
+      position: absolute;
+      top: 0;
+      left: 101%;
+
+      background: url(./imgs/1.big.jpg) no-repeat;
+      background-size: 800px 800px;
+      background-position: 0 0;
+
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div class="show">
+      <img src="./imgs/1.jpg" alt="">
+      <div class="mask"></div>
+    </div>
+    <div class="list">
+      <p class="active">
+        <img src="./imgs/1.small.jpg" showImg="./imgs/1.jpg" enlargeImg="./imgs/1.big.jpg" alt="">
+      </p>
+      <p>
+        <img src="./imgs/2.small.jpg" showImg="./imgs/2.jpg" enlargeImg="./imgs/2.big.jpg" alt="">
+      </p>
+    </div>
+    <div class="enlarge"></div>
+  </div>
+
+  <script>
+    var showEle = document.querySelector(".show");
+    var maskEle = document.querySelector(".mask");
+    var listEle = document.querySelector(".list");
+    var enlargeEle = document.querySelector(".enlarge");
+
+    listEle.addEventListener("click", function (e) {
+      if (e.target.nodeName == "IMG") {
+        listEle.querySelectorAll("p").forEach(function (item) {
+          item.style.borderColor = "black";
+        })
+        e.target.parentElement.style.borderColor = "red";
+        showEle.firstElementChild.src = e.target.getAttribute("showImg");
+        enlargeEle.style.backgroundImage = `url(${e.target.getAttribute("enlargeImg")})`;
+        // console.dir(e.target.getAttribute("enlargeImg"))
+      }
+    })
+
+    showEle.addEventListener("mouseenter", function (e) {
+
+      if (e.offsetX < 100) {
+        maskEle.style.left = 0 + "px";
+      } else if (e.offsetX > 350) {
+        maskEle.style.left = 250 + "px";
+      }else{
+        maskEle.style.left=e.offsetX-100+"px"
+      }
+
+
+      maskEle.style.display = "block";
+
+      enlargeEle.style.display = "block";
+      showEle.addEventListener("mousemove", function (e) {
+        // console.dir(e)
+        // console.log(e.offsetX,e.offsetY)
+        // maskEle.style.display = "block";
+        // if (e.offsetX - 100 >= 0 && e.offsetX + 100 <= 450 && e.offsetY - 100 >= 0 && e.offsetY + 100 <= 450) {
+        //   console.log(e.offsetX,e.offsetY)
+        //   maskEle.style.left = e.offsetX - 100 + "px";
+        //   maskEle.style.top = e.offsetY - 100 + "px";
+        //   // maskEle.style.display = "block";
+
+        // }
+      })
+
+    })
+    showEle.addEventListener("mouseleave", function (e) {
+      showEle.onmousemove = '';
+      maskEle.style.display = "none";
+      enlargeEle.style.display = "none";
+    })
+
+
+  </script>
+</body>
+
+</html>

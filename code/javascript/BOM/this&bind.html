@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //this指向当前对象
+        // console.log(this);
+        var obj = {
+           name:'obj',
+            // fn: () => { console.log(this) }
+            // fn: function(){ console.log(this) }
+        }
+        // obj.fn();
+
+        document.onclick=function(){
+            console.log(this)
+        }
+
+        //call方法改变this指向
+        function fn(){
+            console.log(this,[...arguments]);
+        }
+        // fn.call(obj);
+        //call原理实现
+        function mycall(fnc,obj){
+            obj.fn=fnc;
+            obj.fn([...arguments]);
+            delete obj.fn;
+        }
+        // mycall(fn,obj,1,2,3);
+
+        //apply方法改变this指向
+        // fn.apply(obj,[1,2,3])
+        //apply原理实现
+        function myapply(fnc,obj,arr){
+            obj.fn=fnc;
+            obj.fn(...arr);
+            delete obj.fn;
+        }
+        // myapply(fn,obj,[1,2,3])
+
+        //bind方法改变this指向
+        // fn.bind(obj)(1,2,3)
+        //bind原理实现
+        function mybind(fnc,obj){
+            return function(...args){
+                // console.log(...args);
+                obj.fn=fnc;
+                obj.fn(...args);
+                delete obj.fn;
+            }
+        }
+        // mybind(fn,obj)(1,2,3);
+    </script>
+</body>
+
+</html>
