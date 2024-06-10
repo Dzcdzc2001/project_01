@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //为了兼容不同语言之间数据传输，设计出统一的数据传输格式
+        //1.XML 类似HTML，使用标记来组织数据和保存，有时会用来保存配置类数据
+        //<person>
+        //  <name>...</name>
+        //  <age>...</age>
+        //</person>
+
+        //2.JOSN 是目前最常见的数据传输格式，比较轻量
+        //{"person":{"name":...,"age":...}}
+
+        //JS中的JOSN方法
+        var obj = { name: "Bob", age: 22 };
+        var str = JSON.stringify(obj);
+        console.log(str);
+        var obj2=JSON.parse(str);
+        console.log(obj2);
+    </script>
+</body>
+
+</html>

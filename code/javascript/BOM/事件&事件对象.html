@@ -39,15 +39,16 @@
     <div class="box2"></div>
     <script>
         //事件
-        //事件发生的位置
+        //事件 1.事件源  2.事件类型  3.事件函数
+        //事件对象：所有的事件触发都会有一个对象生成，这个对象描述事件的一些信息
         //鼠标事件
-        //onclick
-        //ondblclick
-        //oncontextmenu
-        //onmousedown
-        //onmouseup
-        //onwheel
-        //onmousemove
+        //onclick 左键单击
+        //ondblclick 左键双击
+        //oncontextmenu 右键单击
+        //onmousedown 鼠标按下
+        //onmouseup 鼠标放开
+        //onwheel 滚轮事件
+        //onmousemove 鼠标移动
 
 
         var boxEle = document.querySelector(".box");
@@ -106,32 +107,34 @@
         // }
 
         //表单事件
-        //oninput
-        //onselect
-        //onchange
-        //onsubmit
-        //onreset
-        //onfocus
-        //onblur
-        //oninvalid
+        //oninput 当`<input>`、`<select>`、`<textarea>`等元素的值发生变化时触发，
+        //input事件的一个特点是会连续触发，即用户每进行一次输入操作，就会触发一次事件
 
-        //ontransitionend 在过渡完成时触发
-        boxEle.onclick = function () {
-            boxEle.style.transition = "all 2s ";
-            boxEle.style.left = "500px";
-        }
-        var num = 0;
-        boxEle.ontransitionend = function () {
-            num++;
-            if(num==1){
-                boxEle.style.top="500px";
-            }else if(num==2){
-                boxEle.style.left = "0px";
-            }else{
-                boxEle.style.top="0px";
-            }
-            console.log(num);
-        }
+        //onselect 当在`<input>`或`<textarea>`元素中选中文本时触发
+        //onchange 当表单元素的内容发生变化，并且元素失去焦点时触发
+        //onsubmit 当表单提交时触发，可以通过阻止此事件的默认行为来阻止表单的提交
+        //onreset 当表单重置时触发，即表单中的所有输入字段被重置为初始值时
+        //onfocus 当表单元素获得焦点时触发，例如用户点击输入框或通过键盘导航到输入框时
+        //onblur 当表单元素失去焦点时触发，例如用户点击输入框外部的元素时
+        //oninvalid 当表单元素的内容未通过验证时触发，这通常与HTML5的表单验证功能一起使用
+
+        // ontransitionend 在过渡完成时触发
+        // boxEle.onclick = function () {
+        //     boxEle.style.transition = "all 2s ";
+        //     boxEle.style.left = "500px";
+        // }
+        // var num = 0;
+        // boxEle.ontransitionend = function () {
+        //     num++;
+        //     if(num==1){
+        //         boxEle.style.top="500px";
+        //     }else if(num==2){
+        //         boxEle.style.left = "0px";
+        //     }else{
+        //         boxEle.style.top="0px";
+        //     }
+        //     console.log(num);
+        // }
         //事件的监听绑定
         // boxEle.addEventListener("click",function(){
         //     console.log(111)
@@ -141,12 +144,12 @@
         // })
 
         //事件的捕获
-        //当事件触发时，会从最顶层逐级向下捕获，直到捕获到最小的触发目标
+        //当事件触发时，会从最顶层逐级向下捕获，直到最小的目标对象
         //事件的冒泡
         //当事件触发时，先触发最小的目标，再逐渐向上触发
 
         //事件的委托
-        //把事件委托给上级，
+        //把事件委托给上级
     </script>
 </body>
 
