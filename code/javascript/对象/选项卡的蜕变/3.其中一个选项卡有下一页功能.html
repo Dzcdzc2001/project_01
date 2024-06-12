@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container1 div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+        }
+
+        .container1 .box1 {
+            background-color: red;
+            display: block;
+        }
+
+        .container1 .box2 {
+            background-color: yellow;
+            display: none;
+        }
+
+        .container1 .box3 {
+            background-color: blue;
+            display: none;
+        }
+
+        .container2 div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+        }
+
+        .container2 .box1 {
+            background-color: red;
+            display: block;
+        }
+
+        .container2 .box2 {
+            background-color: yellow;
+            display: none;
+        }
+
+        .container2 .box3 {
+            background-color: blue;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+        <button>按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <div class="box1">11</div>
+        <div class="box2">22</div>
+        <div class="box3">33</div>
+    </div>
+
+
+    <div class="container2">
+        <button>按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <div class="box1">11</div>
+        <div class="box2">22</div>
+        <div class="box3">33</div>
+    </div>
+    <button class="nextbtn">点击我到下一页</button>
+
+
+
+    <script>
+        //js中哪六种数据是false
+        //0 false undefined "" null NaN
+        // var a = NaN;
+        // console.log(typeof a);
+        // if(!a){
+        //     console.log("1111");
+        // }
+
+        // flag:用来区分是否需要翻页的功能
+        function tab(btns, divs, flag) {
+            //判断出你点击的事那个块，显示出来，其他的隐藏的 （拿到所有的，区分开）
+            function divFor(key) {
+                //遍历所有的div块
+                divs.forEach((div, k2) => {
+                    //找到的对应的块
+                    if (key === k2) {
+                        //显示
+                        div.style.display = 'block';
+                    } else {
+                        //隐藏
+                        div.style.display = 'none';
+                    }
+                })
+            }
+
+            btns.forEach((btn, key) => {
+                //给按钮绑定事件
+                btn.onclick = function () {
+                    divFor(key);
+                }
+            })
+            //需要翻页
+            if (flag) {
+                var nextbtn = document.querySelector(".nextbtn")
+                var num = 0;
+                nextbtn.onclick = function () {
+                    divFor(num);
+                    num++;
+                    //如果翻页完了，回到原点
+                    if (num > 2) {
+                        num = 0;
+                    }
+                }
+            }
+
+        }
+
+        //思路：
+        //拿到所有的按钮，循环绑定事件
+        var btns = document.querySelectorAll(".container1 button");
+        var divs = document.querySelectorAll(".container1 div");
+        tab(btns, divs)
+
+        //拿到所有的按钮，循环绑定事件
+        var btns2 = document.querySelectorAll(".container2 button");
+        var divs2 = document.querySelectorAll(".container2 div");
+        tab(btns2, divs2, true)
+
+
+
+    </script>
+</body>
+
+</html>

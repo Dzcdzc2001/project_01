@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: burlywood;
+            position: absolute;
+            left: 800px;
+            top: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+    </div>
+    <div class="box2"></div>
+    <script>
+        //面向对象三要素：封装 继承 多态
+        var box1Ele = document.querySelector(".box1");
+        var box2Ele = document.querySelector(".box2");
+        //将拖拽封装
+        function Drag(ele) {
+            this.ele = ele;
+            this.dragFn();
+        }
+        //将拖拽的方法拓展到原型对象上
+        Drag.prototype.dragFn = function () {
+            this.ele.onmousedown = function (e) {
+                var that = this;
+                document.onmousemove = function (event) {
+                    that.style.top = event.clientY - e.offsetY + "px";
+                    that.style.left = event.clientX - e.offsetX + "px";
+                }
+            }
+            document.onmouseup = function () {
+                document.onmousemove = function () { };
+            }
+        }
+        //实例化拖拽对象
+        var dragBox1 = new Drag(box1Ele);
+        var dragBox2 = new Drag(box2Ele);
+
+    </script>
+</body>
+
+</html>

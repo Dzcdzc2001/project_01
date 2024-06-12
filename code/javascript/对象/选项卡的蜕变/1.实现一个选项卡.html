@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container1 div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+        }
+        .container1 .box1{
+            background-color: red;
+            /* 默认是显示的 */
+            display: block;
+        }
+        .container1 .box2{
+            background-color: yellow;
+            /* 默认是隐藏的 */
+            display: none;
+        }
+        .container1 .box3{
+            /* 默认是隐藏的 */
+            background-color: blue;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <button>按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <div class="box1">11</div>
+        <div class="box2">22</div>
+        <div class="box3">33</div>
+    </div>
+
+    <script>
+        //思路：
+        //拿到所有的按钮，循环绑定事件
+        var btns = document.querySelectorAll(".container1 button");
+        var divs = document.querySelectorAll(".container1 div");
+
+        btns.forEach((btn,key)=>{
+            //给按钮绑定事件
+            btn.onclick = function(){
+                console.log("得到的key = "+key);
+                //判断出你点击的事那个块，显示出来，其他的隐藏的 （拿到所有的，区分开）
+                //遍历所有的div块
+                divs.forEach((div,k2)=>{
+                    console.log("这是div的key值k2 = " +k2);
+                    //找到的对应的块
+                    if(key === k2){
+                        //显示
+                        div.style.display = 'block'
+                    }else{
+                        //隐藏
+                        div.style.display = 'none'
+                    }
+                })
+            }
+        })
+
+
+
+
+    </script>
+</body>
+</html>

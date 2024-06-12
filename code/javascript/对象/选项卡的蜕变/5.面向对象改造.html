@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container1 div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+        }
+
+        .container1 .box1 {
+            background-color: red;
+            display: block;
+        }
+
+        .container1 .box2 {
+            background-color: yellow;
+            display: none;
+        }
+
+        .container1 .box3 {
+            background-color: blue;
+            display: none;
+        }
+
+        .container2 div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+        }
+
+        .container2 .box1 {
+            background-color: red;
+            display: block;
+        }
+
+        .container2 .box2 {
+            background-color: yellow;
+            display: none;
+        }
+
+        .container2 .box3 {
+            background-color: blue;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+        <button>按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <div class="box1">11</div>
+        <div class="box2">22</div>
+        <div class="box3">33</div>
+    </div>
+
+    <div class="container2">
+        <button>按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <div class="box1">11</div>
+        <div class="box2">22</div>
+        <div class="box3">33</div>
+    </div>
+    <button class="nextbtn">点击我到下一页</button>
+
+
+
+    <script>
+        function Tab(btns, divs) {
+            this.btns = btns;
+            this.divs = divs;
+            this.divFor = function (key) {
+                this.divs.forEach((div, k2) => {
+                    if (key === k2) {
+                        div.style.display = 'block';
+                    } else {
+                        div.style.display = 'none';
+                    }
+                })
+            }
+            this.btns.forEach((btn, key) => {
+                var that = this;
+                btn.onclick = function () {
+                    that.divFor(key);
+                }
+            })
+        }
+
+        var btns = document.querySelectorAll(".container1 button");
+        var divs = document.querySelectorAll(".container1 div");
+        var tab1 = new Tab(btns, divs);
+
+        var btns2 = document.querySelectorAll(".container2 button");
+        var divs2 = document.querySelectorAll(".container2 div");
+        var tab2 = new Tab(btns2, divs2);
+
+    </script>
+</body>
+
+</html>

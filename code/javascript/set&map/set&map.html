@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //1.唯一性：Set中的每个元素都是唯一的，重复的元素会自动被过滤掉
+        //2.无序性：Set不保证元素的顺序，即你添加元素的顺序可能与迭代时的顺序不同
+        //3.可迭代：Set是可迭代的，因此你可以使用for...of循环来遍历它
+        // var s = new Set([1, 1, 2, 3]);
+        // console.log(s)
+
+        // 1.键值对：Map存储的是键值对，允许你使用任何类型的键来存储和检索值
+        // 2.键的唯一性：和Set一样，Map中的每个键都是唯一的
+        // 3.有序性：Map保持键值对的插入顺序，这使得它特别适合需要记住元素添加顺序的场景
+        // 4.可迭代：Map是可迭代的，可以遍历它的键、值或键值对
+        // var m = new Map([['name', 'zs'], ['age', 22]]);
+        // console.log(m);
+
+        //迭代器
+        // 1.迭代器对象：迭代器本身是一个对象，它实现了迭代器协议，允许你按顺序访问集合中的元素。
+        // 2.next()方法：迭代器对象的核心是next()方法，该方法每次调用时返回集合中的下一个元素，直到没有更多元素为止。
+        // 3.返回结果：next()方法返回一个对象，包含当前元素的值value和一个布尔值done，表示是否已遍历完所有元素。
+        // 4.Iterable接口：某些对象实现了Iterable接口，意味着它们可以被迭代。这些对象有一个[Symbol.iterator]()方法，用于获取该对象的迭代器。
+        // 5.使用场景：迭代器简化了对集合的遍历操作，使得无论集合的内部结构如何，都可以使用统一的迭代方式进行访问。它们也常用于实现高阶函数（如map、filter等）和异步迭代。
+        // var myiterator=[1,2,3,4,5][Symbol.iterator]();
+        // console.log(myiterator.next())
+        // var obj={};
+        // console.log(obj)
+
+        //闭包
+        //函数执行完后，函数内部定义的变量会被销毁，但如果在函数内部使用函数保存这个变量，则不会销毁，这个过程就是闭包
+        //使用闭包实现迭代器
+        var arr = [0, 1, 2, 3, 4, 5];
+        function myiterator(array) {
+            var index = 0;
+            return {
+                mynext() {
+                    return {
+                        value: array[index++],
+                        mydone: index > array.length
+                    }
+                }
+            }
+        }
+        // console.log(myiterator(arr).mynext());
+        // console.log(myiterator(arr).mynext());
+        // console.log(myiterator(arr).mynext());
+        // console.log(myiterator(arr).mynext());
+
+
+        function fn() {
+            var a = 10;
+            return function () {
+                console.log(a++)
+            } 
+        }
+        var res = fn();
+        // res();
+        // res();
+        // res();
+
+        for(var key in arr){
+            arr[key]= (function(){
+                return function(){
+                    console.log(key);
+                }
+            })()
+        }
+        arr[0]()
+    </script>
+</body>
+
+</html>

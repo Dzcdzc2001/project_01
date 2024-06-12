@@ -8,29 +8,41 @@
 </head>
 
 <body>
-    <div id="obj1">
-        welcome
-        <h5 id="obj2">hello</h5>
-        <!-- <h5 id="obj3">world</h5> -->
+    <div id="obj1">obj1
+        <h5 id="obj2">obj2
+            <span id="obj3">obj3</span>
+        </h5>
     </div>
+
     <script type="text/javascript">
-        // var obj1=document.getElementById('obj1');
-        // var obj2=document.getElementById('obj2');
-        // obj1.addEventListener('click',function(){
-        //     alert('welcome');
-        // },true);
-        // obj2.addEventListener('click',function(){
-        //     alert('hello');
-        // })
-        function fn([a, b, c], { name }) {
-            console.log(a, b, c, name);
-        }
-        function fn(arr, obj) {
-            console.log(arr, obj);
-        }
+        var obj1 = document.getElementById('obj1');
+        var obj2 = document.getElementById('obj2');
+        var obj3 = document.getElementById('obj3');
 
-        fn([1, 2, 3], { name: "zs" })
+        obj1.addEventListener('click', function () {
+            // alert('obj1');
+            console.log('obj1');
+        });
+        obj2.addEventListener('click', function () {
+            // alert('obj2');
+            console.log('obj2');
+        });
+        console.log(obj2)
+        obj3.addEventListener('click', function () {
+            // alert('obj3');
+            console.log('obj3');
+        }, false);
 
+
+        // function fn([a, b, c], { name }) {
+        //     console.log(a, b, c, name);
+        // }
+        // function fn(arr, obj) {
+        //     console.log(arr, obj);
+        // }
+
+        // fn([1, 2, 3], { name: "zs" })
+        // console.dir([].constructor)
 
     </script>
 </body>
