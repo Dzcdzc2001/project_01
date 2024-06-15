@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 1200px;
+            height: 600px;
+            margin: 50px auto;
+            border: 2px solid;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gameOver {
+            width: 600px;
+            height: 100px;
+            line-height: 100px;
+            font-size: 100px;
+            color: brown;
+            z-index: 2;
+            display: none;
+        }
+
+        .crat {
+            width: 100px;
+            height: 100px;
+            /* background-color: green; */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        
+
+        //     this.move = function () {
+        //         var that = this;
+        //         this.position = {
+        //             X: getComputedStyle(that.snakeHead).left,
+        //             Y: getComputedStyle(that.snakeHead).top
+        //         }
+        //         this.snakeHead.style[this.moveDir] = parseInt(getComputedStyle(this.snakeHead)[this.moveDir]) + this.speed + "px";
+        //         this.snakeBody[this.snakeBody.length - 1].remove;
+        //         this.snakeBody.pop();
+        //         var bodyEle = document.createElement("div");
+        //         bodyEle.className = "body";
+        //         this.snakeBody.unshift(bodyEle);
+
+        //         bodyEle.style.left = this.position.X;
+        //         bodyEle.style.left = this.position.Y;
+
+        // console.log(this.moveDir,this.speed)
+        // var p = {
+        //     left: getComputedStyle(that.snakeHead).left,
+        //     top: getComputedStyle(that.snakeHead).top
+        // };
+        // this.position.unshift(p);
+        // console.log(this.position[0])
+        // this.snakeBody.forEach(function (item, key) {
+        //     item.style.left = that.position[key + 1].left;
+        //     item.style.top = that.position[key + 1].top;
+        // })
+        //         this.gameOver();
+        //         this.eat();
+        //     }
+
+       
+
+
+        class GamePlay {
+            constructor() { }
+            init() { }//初始化
+            collison() { }//碰撞
+            tick() { }//帧更新
+        }
+        class Game extends GamePlay {
+            static instence;
+            constructor() {
+                super();
+                if (!Game.instence) {
+                    Game.instence = this;
+                } else {
+                    return Game.instence;
+                }
+                this.timer = "";
+                this.map = new Map();
+                this.player = new Snake();
+                this.playerController = new PlayerController();
+                this.food = new Food();
+                this.score = {};
+                this.point = 0;
+                this.gameoverText = "GAME OVER";
+            }
+            init() {
+                this.playerController.init();
+                this.map.init();
+                this.player.init(this.map, this.food);
+                this.food.makeFood(this.map, this.player);
+                this.tick();
+                this.scoreInit();
+            }
+            tick() {
+                var that = this;
+                this.timer = setInterval(() => {
+                    that.collison();
+                    that.move();
+                }, 500)
+            }
+            eat() {
+                if (this.player.collisonInf.collider.name == "food") {
+                    console.log("eat")
+                    this.player.collisonInf.collider.food.ele.remove();
+                    this.food.makeFood(this.map, this.player);
+                    this.getScore();
+                }
+            }
+            scoreInit() {
+                this.score = new Crat("white");
+                this.score.ele.style.backgroundColor = "rgba(255,255,255,0)";
+                this.score.ele.style.color = "yellowgreen";
+                this.score.ele.style.fontSize = "35px";
+                this.score.ele.style.textWrap = "nowrap";
+                this.map.borderEle.appendChild(this.score.ele);
+                this.point = 0;
+                this.score.ele.innerText = `得分：${this.point}`;
+            }
+            getScore() {
+                this.point++;
+                this.score.ele.innerText = `得分：${this.point}`;
+            }
+            gameOver() {
+                var that = this;
+                if (this.player.collisonInf.collider.name == "map" || this.player.collisonInf.collider.name == "snake") {
+                    // console.log(this.player.collisonInf.collider.name)
+                    clearInterval(this.timer);
+                    this.player.snake.forEach((item, key) => {
+                        // console.log(that.player.positionList)
+                        item.style.left = that.player.positionList[key].x + "px";
+                        item.style.top = that.player.positionList[key].y + "px";
+                    })
+                    var gameoverEle = document.createElement("div");
+                    gameoverEle.innerText = this.gameoverText;
+                    gameoverEle.className = "gameOver";
+                    gameoverEle.style.display = "block";
+                    this.map.borderEle.appendChild(gameoverEle);
+                }
+            }
+            move() {
+                switch (this.playerController.getKey()) {
+                    case "a":
+                        this.player.axis = "left";
+                        this.player.dir = -1;
+                        // console.log("a")
+                        break;
+                    case "d":
+                        this.player.axis = "left";
+                        this.player.dir = 1;
+                        break;
+                    case "w":
+                        this.player.axis = "top";
+                        this.player.dir = -1;
+                        break;
+                    case "s":
+                        this.player.axis = "top";
+                        this.player.dir = 1;
+                        break;
+                }
+                var that = this;
+                // console.log(this.player.snake.length)
+                // console.log(that.positionList.length)
+                this.player.snake.forEach((item, key) => {
+                    // console.log(key)
+                    that.player.positionList[key].x = parseInt(getComputedStyle(item).left);
+                    that.player.positionList[key].y = parseInt(getComputedStyle(item).top);
+                })
+                this.player.snake[0].style[this.player.axis] = parseInt(getComputedStyle(this.player.snake[0])[this.player.axis]) + 100 * this.player.dir + "px";
+                // console.log(this.snake[0].style[this.axis])
+                var pown = new Crat(this.player.color);
+                this.player.snake.splice(1, 0, pown.ele);
+                pown.setPosition(this.player.position.x, this.player.position.y);
+                // console.log(this.player.position.x,this.player.position.y)
+                this.map.borderEle.appendChild(pown.ele);
+                // console.log(this.map.borderEle)
+                // console.log()
+                this.player.position.x = parseInt(getComputedStyle(this.player.snake[0]).left);
+                this.player.position.y = parseInt(getComputedStyle(this.player.snake[0]).top);
+
+                this.player.collison(this.map, this.food)
+
+                // console.log(this.player.collisonInf.collider.name);
+                if (this.player.collisonInf.collider.name == "food") {
+                    this.player.positionList.unshift(pown.position);
+                    this.eat();
+                } else {
+                    var tail = this.player.snake.pop();
+                    tail.remove();
+                    // console.log("re")
+                }
+                this.gameOver();
+            }
+        }
+        class Map extends GamePlay {
+            constructor() {
+                super();
+                this.name = "map";
+                this.borderEle = document.createElement("div");
+                this.width = 0;
+                this.height = 0;
+                // this.gameoverEle = document.createElement("div");
+            }
+            init() {
+                this.borderEle.className = "container";
+                document.body.appendChild(this.borderEle);
+                this.width = parseInt(getComputedStyle(this.borderEle).width);
+                this.height = parseInt(getComputedStyle(this.borderEle).height);
+                // this.gameoverEle.className = "gameover";
+                // this.borderEle.appendChild(this.gameoverEle);
+                // console.log(this.width,this.height)
+            }
+        }
+        class PlayerController extends GamePlay {
+            constructor() {
+                super();
+                this.name = "playerController";
+                this.key = "";
+            }
+            bindKeyEvent() {
+                var that = this;
+                document.onkeydown = function (e) {
+                    that.key = e.key;
+                    // console.log(1);
+                }
+            }
+            getKey() {
+                return this.key;
+            }
+            init() {
+                this.bindKeyEvent();
+            }
+        }
+        class Player extends GamePlay {
+            constructor(position = { x: 0, y: 0 }, exposition = { x: 0, y: 0 }) {
+                super();
+                this.position = position;
+                this.exposition = exposition;
+                this.positionList = [];
+            }
+            init() { }
+            transform() { }
+        }
+        class Snake extends Player {
+            constructor(length = 3, color = "green", speedrate = 1) {
+                super();
+                this.name = "snake";
+                this.snake = [];
+                this.length = length;
+                this.color = color;
+                this.axis = "left";
+                this.dir = 1;
+                this.speedrate = speedrate;
+                this.timer = "";
+                this.collisonInf = { isCrash: false, collider: {} }
+            }
+            init(map, food) {
+                var pown;
+                for (let i = 0; i < this.length; i++) {
+                    pown = new Crat(this.color);
+                    pown.setPosition(100 * i, 0);
+                    this.positionList.unshift(pown.position);
+                    this.snake.unshift(pown.ele);
+                    map.borderEle.appendChild(pown.ele);
+                }
+                // console.log(map)
+                // console.log(this.snake)
+                this.position.x = parseInt(getComputedStyle(this.snake[0]).left);
+                this.position.y = parseInt(getComputedStyle(this.snake[0]).top);
+                // console.log(this.position)
+                // this.tick(playerController, map);
+                // this.tick(map,food);
+            }
+
+            collison(map, food) {
+                console.log(this.position.x, this.position.y, food.position.x, food.position.y)
+                if (this.position.x < 0 || this.position.x > map.width - 100 || this.position.y < 0 || this.position.y > map.height - 100) {
+                    this.collisonInf.isCrash = true;
+                    this.collisonInf.collider = map;
+                } else if (this.position.x == food.position.x && this.position.y == food.position.y) {
+                    console.log("food")
+                    this.collisonInf.isCrash = true;
+                    this.collisonInf.collider = food;
+                } else if (fn(this)) {
+                    // console.log(2)
+                    this.collisonInf.isCrash = true;
+                    this.collisonInf.collider = this;
+                } else {
+                    this.collisonInf.isCrash = false;
+                    this.collisonInf.collider = { name: "none" };
+                }
+                function fn(player) {
+                    return player.snake.some((item, key) => {
+                        // console.log(1)
+                        if (key > 0) {
+                            // console.log(player.position.x == parseInt(getComputedStyle(item).left) && this.position.y == parseInt(getComputedStyle(item).top))
+                            return player.position.x == parseInt(getComputedStyle(item).left) && player.position.y == parseInt(getComputedStyle(item).top)
+                        }
+                        return false;
+                    })
+                }
+            }
+            tick() { }
+        }
+
+        class Food extends Player {
+            constructor() {
+                super();
+                this.name = "food";
+                this.food = {};
+
+            }
+            makeFood(map, player) {
+                var that = this;
+                this.food = new Crat("red");
+                this.food.setPosition(parseInt(Math.random() * map.width / 100) * 100, parseInt(Math.random() * map.height / 100) * 100);
+                map.borderEle.appendChild(this.food.ele);
+                this.position.x = parseInt(getComputedStyle(this.food.ele).left);
+                this.position.y = parseInt(getComputedStyle(this.food.ele).top);
+                // console.log(this.food.ele)
+                while (fn(player)) {
+                    this.food.setPosition(parseInt(Math.random() * map.width / 100) * 100, parseInt(Math.random() * map.height / 100) * 100);
+                    map.borderEle.appendChild(this.food.ele);
+                    this.position.x = parseInt(getComputedStyle(this.food.ele).left);
+                    this.position.y = parseInt(getComputedStyle(this.food.ele).top);
+                }
+                
+
+                function fn(player) {
+                    return player.snake.some((item, key) => {
+                        // console.log(1) 
+                        // console.log(player.position.x == parseInt(getComputedStyle(item).left) && this.position.y == parseInt(getComputedStyle(item).top))
+                        return that.position.x == parseInt(getComputedStyle(item).left) && that.position.y == parseInt(getComputedStyle(item).top)
+                    })
+                }
+            }
+        }
+        class Crat {
+            constructor(color) {
+                this.ele = document.createElement("div");
+                this.ele.className = "crat";
+                this.ele.style.backgroundColor = color;
+                this.position = { x: 0, y: 0 };
+                // map.borderEle.appendChild
+            }
+            setPosition(x, y) {
+                this.ele.style.left = x + "px";
+                this.ele.style.top = y + "px";
+                this.position.x = x;
+                this.position.y = y;
+            }
+        }
+
+        var snakeGame = new Game();
+        snakeGame.init();
+
+    </script>
+</body>
+
+</html>

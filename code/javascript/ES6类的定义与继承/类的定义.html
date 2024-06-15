@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //class 类的定义
+        // class Person {
+        //     constructor(name, age) {
+        //         this.name = name;
+        //         this.age = age;
+        //     }
+        //     fn() {
+        //         console.log("Person: " + this.name + " " + this.age)
+        //     }
+        // }
+        // console.dir(Person)
+
+        //类的私有成员
+        //私有成员只能在类的内部使用
+        // class Person {
+        //     #name = "";
+        //     #age = 0;
+        //     constructor(name, age) {
+        //         this.#name = name;
+        //         this.#age = age;
+        //     }
+        //     #fn() {
+        //         console.log("Person: " + this.#name + " " + this.#age)
+        //     }
+        //     fn1() {
+        //         this.#fn();
+        //     }
+        // }
+        // var p = new Person("zs", 12);
+        // p.fn1()
+
+        //类的静态成员
+        class Person {
+            static instence = 1;// Person.instence = 1;
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            fn() {
+                console.log("Person: " + this.name + " " + this.age)
+            }
+        }
+        // var p = new Person("zs", 12);
+        // console.log(typeof Person);
+        // console.dir(Person);
+        console.log(Person.instence);
+
+        //单例模式
+        //一个类只有一个实例，不存在多份实例，节省资源
+        class Person {
+            static instence;
+            constructor(name, age) {
+                if (!Person.instence) {
+                    Person.instence = this;
+                } else {
+                    return Person.instence;
+                }
+                this.name = name;
+                this.age = age;
+            }
+            fn() {
+                console.log("Person: " + Person.instence)
+            }
+        }
+    </script>
+</body>
+
+</html>
