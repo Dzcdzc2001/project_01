@@ -1,31 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        .container{
-            width: 400px;
-            height: 400px;
-            border: 1px solid;
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            /* border: 1px solid; */
             /* display: flex; */
-            background-color: red;
+            /* background-color: red; */
         }
-        .box{
-            /* display: inline-block; */
+
+        .boxcontainer {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .showbox {
             width: 100px;
             height: 100px;
-            margin-top:40px;
+            margin: 100px auto;
+            border: 1px solid;
+            overflow: hidden;
+        }
+
+        .box {
+            /* display: inline-block; */
+
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* transition: all 1s; */
+            /* margin-top: 40px; */
             /* margin-bottom:20px; */
             /* margin-right: 40px; */
-            border: 1px solid;
+            /* border: 1px solid; */
+            /* animation: animation 4s; */
         }
-        .box2{
+
+        @keyframes animation {
+            0% {
+                left: 0;
+                top: 0;
+            }
+
+            25% {
+                left: 400px;
+                top: 0;
+            }
+
+            50% {
+                left: 400px;
+                top: 400px;
+
+            }
+
+            75% {
+                left: 0px;
+                top: 400px;
+            }
+
+            100% {
+                left: 0;
+                top: 0px;
+            }
+        }
+
+        .box2 {
             /* display: inline-block; */
             width: 100px;
             height: 100px;
@@ -35,11 +88,140 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <div class="box"></div> 
+        <!-- <div class="box"></div> -->
         <!-- <div class="box2"></div>    -->
+        <div class="showbox"></div>
+        <div class="boxcontainer">
+            <div class="box"></div>
+            <div class="box" style="background-color: blue;"></div>
+            <div class="box" style="background-color: green;"></div>
+            <div class="box" style="background-color: yellow;"></div>
+        </div>
     </div>
+    <script>
+        // var timer = setInterval(()=>{},1000);
+        // console.log(timer)
+        let containerEle = document.querySelector(".c");
+        let boxEle = document.querySelector(".box");
+        // console.dir(boxEle)
+        // let count = 0;
+        boxEle.onclick = function () {
+            // this.style.left = 400 + "px";
+            // setInterval(() => {
+            //     if (count == 0) {
+            //         this.style.left = 400 + "px";
+            //     } else if (count == 1) {
+            //         this.style.top = 400 + "px";
+            //     } else if (count == 2) {
+            //         this.style.left = 0 + "px";
+            //     } else {
+            //         this.style.top = 0 + "px";
+            //     }
+            //     count++;
+            //     if (count > 3) {
+            //         count = 0;
+            //     }
+            // }, 1000)
+            // setTimeout(() => {
 
+            // }, 1000)
+            //     let flag = 0;
+            //
+            //     let timer = setInterval(() => {
+
+            //         if (parseInt(getComputedStyle(this).left) < 400 && parseInt(getComputedStyle(this).top) == 0 && flag == 0) {
+            //             this.style.left = parseInt(getComputedStyle(this).left) + 1 + "px";
+            //             // console.log(1)
+            //         } else if (parseInt(getComputedStyle(this).left) == 400 && parseInt(getComputedStyle(this).top) < 400) {
+            //             this.style.top = parseInt(getComputedStyle(this).top) + 1 + "px";
+            //             // console.log(2)
+            //         } else if (parseInt(getComputedStyle(this).left) <= 400 && parseInt(getComputedStyle(this).left) > 0 && parseInt(getComputedStyle(this).top) == 400) {
+            //             this.style.left = parseInt(getComputedStyle(this).left) - 1 + "px";
+            //             // console.log(3)
+            //         } else if (parseInt(getComputedStyle(this).left) == 0 && parseInt(getComputedStyle(this).top) <= 400 && parseInt(getComputedStyle(this).top) > 0) {
+            //             this.style.top = parseInt(getComputedStyle(this).top) - 1 + "px";
+            //             flag = 1;
+            //             // console.log(4)
+            //         } else if (parseInt(getComputedStyle(this).left) == 0 && parseInt(getComputedStyle(this).top) == 0 && flag == 1) {
+            //             clearInterval(timer);
+            //             // flag = 0;
+            //         }
+            //     }, 2.5)
+            // }
+            // function isInArea(ele, axis, m, n) {
+            //     let pos = parseInt(getComputedStyle(ele)[axis]);
+            //     if (pos >= m && pos <= n) {
+            //         return true;
+            //     }
+            //     return false;
+            //     move(this, "left", 400, () => {
+            //         move(this, "top", 400, () => {
+            //             move(this, "left", 0, () => {
+            //                 move(this, "top", 0, () => { })
+            //             })
+            //         })
+            //     })
+        }
+
+        // function move(ele, axis, target, callback) {
+        //     let timer;
+        //     timer = setInterval(() => {
+        //         let pos = parseInt(getComputedStyle(ele)[axis]);
+        //         if (pos === target) {
+        //             clearInterval(timer);
+        //             callback && callback();
+        //         } else {
+        //             ele.style[axis] = pos + (target > pos ? 1 : -1) + "px";
+        //             console.log(pos)
+        //         }
+        //         // console.log(1)
+        //     }, 2.5)
+        // }
+
+        // function wheel(ele,) {
+
+        // }
+        // if (isInArea(this,"left",0,400) && isInArea(this,"top",0,400) == 0 && flag == 0) {
+        //             this.style.left = parseInt(getComputedStyle(this).left) + 1 + "px";
+        //             // console.log(1)
+        //         } else if (parseInt(getComputedStyle(this).left) == 400 && parseInt(getComputedStyle(this).top) < 400) {
+        //             this.style.top = parseInt(getComputedStyle(this).top) + 1 + "px";
+        //             // console.log(2)
+        //         } else if (parseInt(getComputedStyle(this).left) <= 400 && parseInt(getComputedStyle(this).left) > 0 && parseInt(getComputedStyle(this).top) == 400) {
+        //             this.style.left = parseInt(getComputedStyle(this).left) - 1 + "px";
+        //             // console.log(3)
+        //         } else if (parseInt(getComputedStyle(this).left) == 0 && parseInt(getComputedStyle(this).top) <= 400 && parseInt(getComputedStyle(this).top) > 0) {
+        //             this.style.top = parseInt(getComputedStyle(this).top) - 1 + "px";
+        //             flag = 1;
+        //             // console.log(4)
+        //         }
+
+        // boxEle.ontransitionend = function () {
+        //     count++;
+        //     if (count == 1) {
+        //         this.style.top = 400 + "px";
+        //     } else if (count == 2) {
+        //         this.style.left = 0 + "px";
+        //     } else {
+        //         this.style.top = 0 + "px";
+        //     }
+        // }
+        function Person() {
+            this.name = "person";
+            console.log("person")
+        }
+        function link(){
+            console.log("link")
+        }
+        link.prototype=Person.prototype;
+        let li=new link();
+        li.__proto__.constructor();
+        // console.log(new link())
+        // console.log(new Person())
+    </script>
 </body>
+
 </html>

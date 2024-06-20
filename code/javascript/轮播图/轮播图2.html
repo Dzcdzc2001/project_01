@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 1020px;
+            height: 300px;
+            margin: 200px auto;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid;
+            transition: all .4s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+
+    <script>
+        function throtte(fn, delay) {
+            let flag = true;
+            return function (e) {
+                if (flag) {
+                    fn.call(this, e);
+                    flag = !flag;
+                    setTimeout(() => {
+                        flag = !flag;
+                    }, delay)
+                }
+                // return false;
+            }
+        }
+        class Swiper {
+            constructor(imgSource, container, config = { hasSwitchBtn: false, hasSwitchDots: false, dotsColor: "red", autoPlaySpeed: 2000 }) {
+                this.containerEle = document.querySelector(container);
+                this.innerEle = document.createElement("div");
+                this.indexbarEle = document.createElement("div");
+                this.imgSource = imgSource;
+                this.width = parseInt(getComputedStyle(this.containerEle).width);
+                this.height = parseInt(getComputedStyle(this.containerEle).height);
+                this.preBtn = document.createElement("div");
+                this.nextBtn = document.createElement("div");
+                this.imgNum = this.imgSource.length;
+                this.config = config;
+                this.index = 1;
+                this.timer = null;
+
+                this.init();
+            }
+            init() {
+                this.containerEle.appendChild(this.innerEle);
+
+                this.imgSource.forEach((item, key) => {
+                    let imgEle = document.createElement("img");
+                    imgEle.src = item;
+                    this.innerEle.appendChild(imgEle);
+
+                })
+                let lastImg = this.innerEle.firstElementChild.cloneNode(true);
+                let firstImg = this.innerEle.lastElementChild.cloneNode(true);
+                this.innerEle.appendChild(lastImg);
+                this.innerEle.prepend(firstImg);
+
+                if (this.config.hasSwitchDots) {
+                    this.containerEle.appendChild(this.indexbarEle);
+                    for (let i = 0; i < this.imgNum; i++) {
+                        let indexEle = document.createElement("div");
+                        indexEle.className = "index";
+                        this.indexbarEle.appendChild(indexEle);
+                    }
+                    this.switchDots();
+                }
+                if (this.config.hasSwitchBtn) {
+                    this.containerEle.appendChild(this.preBtn);
+                    this.containerEle.appendChild(this.nextBtn);
+                    this.switchBtn();
+                }
+
+                this.setStyle();
+                this.autoPlay();
+                this.autoPlayCtrl();
+            }
+            autoPlay() {
+                this.select();
+                this.timer = setInterval(() => {
+                    this.index++;
+                    this.move(this.innerEle, "left", -this.width * 0.4 * this.index + (this.width * 0.3), 24, () => {
+                        if (this.index === this.imgNum + 1) {
+                            this.index = 1;
+                            this.innerEle.style.left = `-${this.width * 0.1}px`;
+                        }
+                    })
+                }, this.config.autoPlaySpeed)
+            }
+            autoPlayCtrl() {
+                let that = this;
+                this.containerEle.onmouseenter = function () {
+                    clearInterval(that.timer);
+                    this.style.boxShadow = "0 0 20px rgba(0, 0, 0, .7)";
+                }
+                this.containerEle.onmouseleave = function () {
+                    that.autoPlay();
+                    this.style.boxShadow = "none";
+                }
+                let flag = true;
+                window.addEventListener("visibilitychange", function () {
+                    if (flag) {
+                        clearInterval(that.timer);
+                    } else {
+                        that.autoPlay();
+                    }
+                    flag = !flag;
+                })
+            }
+            switchBtn() {
+                let that = this;
+                this.nextBtn.onclick = throtte(function (e) {
+                    // e.preventDefault();
+                    that.index++;
+                    that.move(that.innerEle, "left", -that.width * that.index, 51, () => {
+                        if (that.index === that.imgNum + 1) {
+                            that.index = 1;
+                            that.innerEle.style.left = `-${that.width}px`;
+                        }
+                    })
+                }, 190)
+                this.preBtn.onclick = throtte(function (e) {
+                    // e.preventDefault();
+                    that.index--;
+                    that.move(that.innerEle, "left", -that.width * that.index, 51, () => {
+                        if (that.index === 0) {
+                            that.index = that.imgNum;
+                            that.innerEle.style.left = `-${that.width * that.imgNum}px`;
+                        }
+                    })
+                }, 190)
+            }
+            switchDots() {
+                let that = this;
+                this.indexbarEle.onclick = throtte(function (e) {
+                    let arr = [...this.children];
+                    if (e.target.className === "index") {
+
+                        // that.move(that.innerEle, "left", -that.width * that.index, 40, () => { });
+                        if (Math.abs(that.index - (arr.indexOf(e.target) + 1)) > 2) {
+                            that.index = arr.indexOf(e.target) + 1;
+                            that.move(that.innerEle, "left", -that.width * (arr.indexOf(e.target) + 1), 102, () => { });
+                        } else {
+                            that.index = arr.indexOf(e.target) + 1;
+                            that.move(that.innerEle, "left", -that.width * (arr.indexOf(e.target) + 1), 51, () => { });
+                        }
+
+                    }
+                }, 300)
+            }
+            select() {
+                if (this.config.hasSwitchDots) {
+                    let arr = this.indexbarEle.children;
+                    [...this.indexbarEle.children].forEach((item) => {
+                        item.style.backgroundColor = "darkgrey";
+                    })
+                    if (this.index === this.imgNum + 1) {
+                        arr[0].style.backgroundColor = "red";
+                    } else if (this.index === 0) {
+                        arr[this.imgNum - 1].style.backgroundColor = "red";
+                    } else {
+                        arr[this.index - 1].style.backgroundColor = "red";
+                    }
+                }
+            }
+
+            move(ele, axis, target, speed = 10, callback) {
+                let timer;
+                timer = setInterval(() => {
+                    let pos = parseInt(getComputedStyle(ele)[axis]);
+                    if (pos === target) {
+                        clearInterval(timer);
+                        callback && callback();
+                    } else {
+                        ele.style[axis] = pos + (target > pos ? speed : -speed) + "px";
+                    }
+                }, 1)
+                // this.select();
+            }
+
+            setStyle() {
+                let that = this;
+                this.innerEle.style.width = (this.imgNum + 2) * this.width + "px";
+                this.innerEle.style.height = this.height + "px";
+                this.innerEle.style.position = "absolute";
+                this.innerEle.style.top = "50%";
+                this.innerEle.style.transform = "translateY(-50%)";
+                this.innerEle.style.left = `-${this.width * 0.1}px`;
+                [...this.innerEle.children].forEach((item) => {
+                    item.style.width = that.width * 0.4 + "px";
+                    item.style.height = that.height * 0.4 + "px";
+                });
+                if (this.config.hasSwitchDots) {
+                    this.indexbarEle.style.transform = "translateX(-50%)";
+                    this.indexbarEle.style.position = "absolute";
+                    this.indexbarEle.style.left = "50%";
+                    this.indexbarEle.style.bottom = `${this.width / 260}px`;
+                    this.indexbarEle.style.cursor = "pointer";
+                    [...this.indexbarEle.children].forEach((item) => {
+                        item.style.width = that.width / 52 + "px";
+                        item.style.height = that.width / 52 + "px";
+                        item.style.margin = `${that.width / 260}px`;
+                        item.style.border = "1px solid white";
+                        item.style.backgroundColor = "white";
+                        item.style.borderRadius = "50%";
+                        item.style.float = "left";
+                    });
+
+                }
+                if (this.config.hasSwitchBtn) {
+                    this.preBtn.style.width = this.width / 17.3 + "px";
+                    this.preBtn.style.height = parseInt(getComputedStyle(this.preBtn).width) * 3 + "px";
+                    this.preBtn.style.backgroundColor = "rgba(255,255,255,.4)";
+                    this.preBtn.style.borderRadius = `0 ${this.width / 17.3 / 6}px ${this.width / 17.3 / 6}px 0`;
+                    this.preBtn.style.textAlign = "center";
+                    this.preBtn.style.lineHeight = getComputedStyle(this.preBtn).height;
+                    this.preBtn.style.color = "white";
+                    this.preBtn.style.fontSize = this.width / 26 + "px";
+                    this.preBtn.style.position = "absolute";
+                    this.preBtn.style.left = "0";
+                    this.preBtn.style.top = "50%";
+                    this.preBtn.style.transform = "translateY(-50%)";
+                    this.preBtn.style.zIndex = "1";
+                    this.preBtn.style.cursor = "pointer";
+                    this.preBtn.innerHTML = "<";
+                    this.preBtn.onmouseenter = function () {
+                        this.style.backgroundColor = "rgba(255,255,255,.6)";
+                    }
+                    this.preBtn.onmouseleave = function () {
+                        this.style.backgroundColor = "rgba(255,255,255,.4)";
+                    }
+
+                    this.nextBtn.style.width = this.width / 17.3 + "px";
+                    this.nextBtn.style.height = parseInt(getComputedStyle(this.nextBtn).width) * 3 + "px";
+                    this.nextBtn.style.backgroundColor = "rgba(255,255,255,.4)";
+                    this.nextBtn.style.borderRadius = `${this.width / 17.3 / 6}px 0 0 ${this.width / 17.3 / 6}px`;
+                    this.nextBtn.style.textAlign = "center";
+                    this.nextBtn.style.lineHeight = getComputedStyle(this.nextBtn).height;
+                    this.nextBtn.style.color = "white";
+                    this.nextBtn.style.fontSize = this.width / 26 + "px";
+                    this.nextBtn.style.position = "absolute";
+                    this.nextBtn.style.left = this.width - parseInt(getComputedStyle(this.nextBtn).width) + "px";
+                    this.nextBtn.style.top = "50%";
+                    this.nextBtn.style.transform = "translateY(-50%)";
+                    this.nextBtn.style.zIndex = "1";
+                    this.nextBtn.style.cursor = "pointer";
+                    this.nextBtn.innerHTML = ">";
+                    this.nextBtn.onmouseenter = function () {
+                        this.style.backgroundColor = "rgba(255,255,255,.6)";
+                    }
+                    this.nextBtn.onmouseleave = function () {
+                        this.style.backgroundColor = "rgba(255,255,255,.4)";
+                    }
+                }
+
+            }
+        }
+        // let imgSource = ["./imgs/1t.png", "./imgs/2t.png", "./imgs/3t.png", "./imgs/4t.png", "./imgs/5t.png"];
+        let imgSource = ["./imgs/image1.png", "./imgs/image2.png", "./imgs/image3.png", "./imgs/image4.png"]
+        new Swiper(imgSource, ".container")
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <script>
+        function debounce1(fn, delay) {
+            let timer;
+            return function () {
+                //前置防抖
+                if (!timer) {
+                    //先执行一次
+                    fn.call(this)
+                }
+                //timer不为null，
+                clearTimeout(timer);
+                //添加保护时间
+                //设置timer，连点timer不为null
+                timer = setTimeout(() => {
+                    //timer为null可以执行
+                    timer = null;
+                }, delay)
+            }
+        }
+
+        function debounce2(fn, delay) {
+            let timer;
+            return function () {
+                //后置防抖
+                clearTimeout(timer);
+                //添加保护时间
+                timer = setTimeout(() => {
+                    fn.call(this);
+                }, delay)
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

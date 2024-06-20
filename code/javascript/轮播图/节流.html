@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //节流
+        //当函数重复高频次调用时会消耗大量性能，节流可控制函数执行的频率解决此类问题
+        //利用时间戳实现节流
+        function throtte1(fn, delay) {
+            let startTime = new Date();
+            return function () {
+                let endTime = new Date();
+                if (endTime - startTime > delay) {
+                    fn.call(this);
+                    startTime = endTime;
+                }
+            }
+        }
+        //利用setTimeOut定时器实现节流
+        function throtte2(fn, delay) {
+            let flag = true;
+            return function () {
+                if (flag) {
+                    fn.call(this);
+                    flag = !flag;
+                    setTimeout(() => {
+                        flag = !flag;
+                    }, delay)
+                }
+            }
+        }
+        document.onmousemove = throtte2(function () {
+            console.log(new Date().getTime())
+        }, 1000)
+    </script>
+</body>
+
+</html>

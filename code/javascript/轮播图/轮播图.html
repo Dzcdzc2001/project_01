@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .show {
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+            border: 1px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 3640px;
+            height: 280px;
+            position: absolute;
+            left: -520px;
+        }
+
+        img {
+            float: left;
+        }
+
+        .btn1 {
+            width: 30px;
+            height: 90px;
+            background-color: black;
+            opacity: .4;
+            border-radius: 0 5px 5px 0;
+            text-align: center;
+            line-height: 90px;
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: 95px;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .btn2 {
+            width: 30px;
+            height: 90px;
+            background-color: black;
+            opacity: .4;
+            border-radius: 5px 0 0 5px;
+            text-align: center;
+            line-height: 90px;
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            left: 490px;
+            top: 95px;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .indexbar {
+            /* height: ; */
+            transform: translateX(-50%);
+            position: absolute;
+            left: 50%;
+            bottom: 2px;
+            cursor: pointer;
+        }
+
+        .index {
+            width: 10px;
+            height: 10px;
+            margin: 2px;
+            border: 1px solid white;
+            background-color: white;
+            border-radius: 50%;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="show">
+        <div class="btn1">&lt;</div>
+        <div class="btn2">&gt;</div>
+        <div class="container">
+            <!-- <img src="./imgs/5t.png" alt="">
+            <img src="./imgs/1t.png" alt="">
+            <img src="./imgs/2t.png" alt="">
+            <img src="./imgs/3t.png" alt="">
+            <img src="./imgs/4t.png" alt="">
+            <img src="./imgs/5t.png" alt="">
+            <img src="./imgs/1t.png" alt=""> -->
+        </div>
+        <div class="indexbar"></div>
+    </div>
+
+    <script>
+        let showEle = document.querySelector(".show")
+        let containerEle = document.querySelector(".container");
+        let lastBtn = document.querySelector(".btn1");
+        let nextBtn = document.querySelector(".btn2");
+        let indexbarEle = document.querySelector(".indexbar")
+        //初始化加载
+        init()
+        //index记录当前显示图片
+        let index = 1;
+        //初始圆点显示
+        select(index);
+
+        //默认开启自动轮播
+        let timer = setInterval(() => {
+            index++;
+            move(containerEle, "left", -520 * index, () => {
+                if (index === 6) {
+                    index = 1;
+                    containerEle.style.left = "-520px";
+                }
+            })
+        }, 2000)
+        //鼠标移入轮播图时停止自动轮播
+        showEle.onmouseenter = function () {
+            clearInterval(timer);
+        }
+        //鼠标离开轮播图时开启自动轮播
+        showEle.onmouseleave = function () {
+            timer = setInterval(() => {
+                index++;
+                move(containerEle, "left", -520 * index, () => {
+                    if (index === 6) {
+                        index = 1;
+                        containerEle.style.left = "-520px";
+                    }
+                })
+            }, 2000)
+        }
+        //下一页
+        nextBtn.onclick = function (e) {
+            e.preventDefault();
+            index++;
+            move(containerEle, "left", -520 * index, () => {
+                //从过渡图1切换到实际图1
+                if (index === 6) {
+                    index = 1;
+                    containerEle.style.left = "-520px";
+                }
+            })
+            clickProtect(this, 500)
+        }
+        lastBtn.onclick = function (e) {
+            e.preventDefault();
+            index--;
+            move(containerEle, "left", -520 * index, () => {
+                //从过渡图5切换到实际图5
+                if (index === 0) {
+                    index = 5;
+                    containerEle.style.left = "-2600px";
+                }
+            })
+            clickProtect(this, 500)
+        }
+        function init() {
+            for (let i = 1; i <= 5; i++) {
+                //生成图片
+                let imgEle = document.createElement("img");
+                imgEle.src = `./imgs/${i}t.png`;
+                containerEle.appendChild(imgEle);
+                //生成圆点
+                let indexEle = document.createElement("div");
+                indexEle.className = "index";
+                indexbarEle.appendChild(indexEle);
+            }
+            let lastImg = containerEle.firstElementChild.cloneNode(true);
+            let firstImg = containerEle.lastElementChild.cloneNode(true);
+            containerEle.appendChild(lastImg);
+            containerEle.prepend(firstImg);
+        }
+        function move(ele, axis, target, callback) {
+            let timer;
+            timer = setInterval(() => {
+                let pos = parseInt(getComputedStyle(ele)[axis]);
+                if (pos === target) {
+                    clearInterval(timer);
+                    callback && callback();
+                } else {
+                    ele.style[axis] = pos + (target > pos ? 10 : -10) + "px";
+                }
+            }, 1)
+            select(index);
+        }
+        //圆点显示方法
+        function select(index) {
+            let arr = indexbarEle.children;
+            // console.log(arr)
+            // 清除显示
+            for (let i = 0; i < 5; i++) {
+                arr[i].style.backgroundColor = "darkgrey";
+            }
+            // 显示当前图片对应圆点
+            if (index === 6) {
+                arr[0].style.backgroundColor = "red";
+            } else if (index === 0) {
+                arr[4].style.backgroundColor = "red";
+            } else {
+                // console.log(index)
+                arr[index - 1].style.backgroundColor = "red";
+            }
+        }
+        //点击圆点切换图片
+        indexbarEle.onclick = function (e) {
+            let arr = [...indexbarEle.children];
+            if (e.target.className === "index") {
+                index = arr.indexOf(e.target) + 1;
+                move(containerEle, "left", -520 * index, () => { })
+            }
+            clickProtect(this, 500);
+        }
+        //连点保护
+        function clickProtect(ele, duration) {
+            let fn = ele.onclick;
+            ele.onclick = '';
+            setTimeout(() => {
+                ele.onclick = fn;
+            }, duration)
+        }
+        //切后台
+        let flag = true;
+        window.addEventListener("visibilitychange", function () {
+            if (flag) {
+                clearInterval(timer);
+            } else {
+                timer = setInterval(() => {
+                    index++;
+                    move(containerEle, "left", -520 * index, () => {
+                        if (index === 6) {
+                            index = 1;
+                            containerEle.style.left = "-520px";
+                        }
+                    })
+                }, 2000)
+            }
+            flag = !flag;
+        })
+    </script>
+</body>
+
+</html>
