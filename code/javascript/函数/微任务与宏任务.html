@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //同步 :程序从上到下按顺序执行
+        //异步 :程序可以同时执行其他任务
+        //异步任务 :宏任务，微任务
+        //js中宏任务 :script代码加载，开启定时器
+        //宏任务按照由上到下的顺序执行，当有紧急任务不可以插队执行
+        //js中的微任务 :then，MutationObserver
+        //微任务按照由上到下的顺序执行，当有紧急任务可以插队执行
+        //系统任务分配：先执行宏任务，再执行该宏任务下的微任务
+
+
+        // setTimeout(() => {
+        //     console.log(1)
+        //     let p2 = new Promise((resolve, reject) => {
+        //         console.log(6)
+        //         resolve();
+        //     })
+        //     p.then(res => {
+        //         console.log(7);
+        //         setTimeout(() => { console.log(8); })
+        //     })
+        // })
+        // let p = new Promise((resolve, reject) => {
+        //     console.log(2)
+        //     setTimeout(() => { console.log(3); })
+        //     resolve();
+        // })
+        // p.then(res => {
+        //     console.log(4);
+        // }).then(res => {
+        //     console.log(12);
+        // })
+        // setTimeout(() => {
+        //     console.log(5)
+        //     setTimeout(() => { console.log(9); })
+        // })
+
+        // p.then(res => {
+        //     console.log(7);
+        //     setTimeout(() => { console.log(8); })
+        // })
+        // setTimeout(() => {
+        //     console.log(10);
+        //     setTimeout(() => { console.log(11); })
+        // })
+        // setTimeout(() => { console.log(9); })
+
+
+    </script>
+</body>
+
+</html>

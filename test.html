@@ -209,18 +209,21 @@
         //         this.style.top = 0 + "px";
         //     }
         // }
-        function Person() {
-            this.name = "person";
-            console.log("person")
-        }
-        function link(){
-            console.log("link")
-        }
-        link.prototype=Person.prototype;
-        let li=new link();
-        li.__proto__.constructor();
+        // function Person() {
+        //     this.name = "person";
+        //     console.log("person")
+        // }
+        // function link(){
+        //     console.log("link")
+        // }
+        // link.prototype=Person.prototype;
+        // let li=new link();
+        // li.__proto__.constructor();
         // console.log(new link())
         // console.log(new Person())
+
+        let { name } = { name: "name" };
+        console.log(name)
     </script>
 </body>
 
