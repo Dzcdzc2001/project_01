@@ -31,6 +31,26 @@ function myRemove(src) {
     } catch (err) {
         console.log(err);
     }
-
 }
 // myRemove("./111");
+
+//利用递归实现完全复制文件夹
+function myCopy(src) {
+    try {
+        let arr = fs.readdirSync(src);
+        if (arr.length === 0) {
+            fs.rmdirSync(src);
+        } else {
+            arr.forEach(item => {
+                if (fs.statSync(src+"/"+item).isDirectory()) {
+                    myRemove(src+"/"+item);
+                } else {
+                    // fs.unlinkSync(src+"/"+item);
+                }
+            })
+            // fs.rmdirSync(src);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
