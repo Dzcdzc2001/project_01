@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/ejs/ejs.js"></script>
+</head>
+
+<body>
+    <script>
+        let users = [
+            { name: "张三", age: 20, hobby: ["篮球", "足球", "羽毛球"] },
+            { name: "李四", age: 23, hobby: ["足球", "乒乓球"] },
+            { name: "王五", age: 25, hobby: ["象棋", "围棋"] }
+        ];
+        let html = `<ul>
+            <% users.forEach(item=>{ %>
+                <li>姓名：<%=item.name%>
+                    年龄：<%=item.age%>
+                    爱好：<% item.hobby.forEach(val=>{ %> 
+                            <span><%=val%></span>
+                        <% }) %>
+                </li>
+            <% }) %>
+        </ul>`
+        document.body.innerHTML = ejs.render(html, users);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+const news = import("/data/news.json");
