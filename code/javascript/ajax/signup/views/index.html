@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    uesrname: <input type="text" name="" id="username">
+    userage: <input type="text" name="" id="userage">
+    <button>保存</button>
+    <ul class="show"></ul>
+
+    <script>
+        let btnEle = document.querySelector("button");
+        let showEle = document.querySelector("ul");
+        let users = [];
+
+        function render() {
+            return new Promise((resolve, reject) => {
+                // console.log(users)
+                showEle.innerHTML = '';
+                if (users.length != 0) {
+                    users.forEach(item => {
+                        let liEle = document.createElement("li");
+                        let rmBtn = document.createElement("button");
+                        liEle.innerHTML = `username: ${item.username} userage: ${item.userage}`;
+                        rmBtn.innerHTML = `删除`;
+                        liEle.appendChild(rmBtn);
+                        rmBtn.onclick = function () {
+                            users = users.filter(val => {
+                                return item.id != val.id;
+                            });
+                            (async function () {
+                                try {
+                                    await syncDataToServer();
+                                    await syncDataFormServer();
+                                    await render();
+                                } catch (err) {
+                                    console.log(err);
+                                }
+                            })();
+                        }
+                        showEle.appendChild(liEle);
+                    })
+                    console.log(3)
+                    resolve();
+                }
+            })
+
+        }
+
+        function syncDataFormServer() {
+            return new Promise((resolve, reject) => {
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("get", "/userinfo");
+                xhr.send();
+                xhr.onload = function () {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        users = JSON.parse(xhr.responseText);
+                        console.log(users);
+                        console.log(2)
+                        resolve();
+                    }
+                }
+            })
+        }
+
+        function syncDataToServer() {
+            return new Promise((resolve, reject) => {
+                let xhr = new XMLHttpRequest();
+                xhr.open("post", "/signup");
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.send(JSON.stringify(users));
+                // console.log(JSON.stringify(users))
+                xhr.onload = function () {
+                    if (JSON.parse(xhr.responseText).status == 1) {
+                        resolve();
+                    }
+                    // console.log(xhr.responseText);
+
+                    console.log(1)
+                }
+            })
+
+        }
+
+        (async function () {
+            try {
+                await syncDataFormServer();
+                await render();
+            } catch (err) {
+                console.log(err);
+            }
+        })();
+
+        btnEle.onclick = function () {
+            let username = document.querySelector("#username").value;
+            let userage = document.querySelector("#userage").value;
+            if (users.length == 0) {
+                users.push({ id: 1, username, userage });
+            } else {
+                users.push({ id: users[users.length - 1].id + 1, username, userage });
+            }
+            (async function () {
+                try {
+                    await syncDataToServer();
+                    await syncDataFormServer();
+                    await render();
+                } catch (err) {
+                    console.log(err);
+                }
+            })();
+        }
+    </script>
+</body>
+
+</html>

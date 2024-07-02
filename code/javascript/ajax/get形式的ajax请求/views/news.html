@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>hello</h1>
+    <ul></ul>
+    <script>
+        let ulEle = document.querySelector("ul");
+
+        document.onclick = function () {
+            let xhl = new XMLHttpRequest();
+            xhl.open("get", `/news`);
+            xhl.send();
+            xhl.onreadystatechange = function () {
+                if (xhl.readyState == 4 && xhl.status >= 200 && xhl.status < 300) {
+                    let str = "";
+                    ulEle.innerHTML = "";
+                    console.log(xhl.responseText)
+                    JSON.parse(xhl.responseText).forEach(item => {
+                        str += `<li>${item.title}</li>`;
+                    })
+                    ulEle.innerHTML = str;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

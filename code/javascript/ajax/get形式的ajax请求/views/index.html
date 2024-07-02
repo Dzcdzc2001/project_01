@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/user" method="get">
+        username: <input type="text" name="username" id="uname">
+        password: <input type="text" name="password" id="pwd">
+        <input type="submit" class="btn">
+    </form>
+    <p></p>
+
+    <script>
+        let form = document.querySelector("form");
+        let unameEle = document.querySelector("#uname");
+        let pwdEle = document.querySelector("#pwd");
+        let btnEle = document.querySelector(".btn");
+
+        form.onsubmit = function (e) {
+            e.preventDefault();
+        }
+        btnEle.onclick = function () {
+            let username = unameEle.value;
+            let password = pwdEle.value;
+            let ajax = new XMLHttpRequest();
+            ajax.open("get", `/user?username=${username}&password=${password}`);
+            ajax.send();
+            ajax.onload = function () {
+                document.querySelector("p").innerHTML = ajax.responseText;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

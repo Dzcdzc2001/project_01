@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    username: <input type="text" id="username">
+    password: <input type="text" id="password">
+    <button class="btn">post</button>
+    <button class="btnTimeout">超时终止</button>
+    <button class="btnAbort">主动终止</button>
+
+    <script>
+
+        let postBtn = document.querySelector(".btn");
+
+        // postBtn.onclick = function () {
+        //     // let username = document.querySelector("#username").value;
+        //     // let password = document.querySelector("#password").value;
+        //     // let xhr = new XMLHttpRequest();
+        //     // xhr.open("post", "/signup");
+        //     // xhr.setRequestHeader("Content-Type", "application/json");
+        //     // xhr.onload = function () {
+        //     //     if (xhr.status == 200) {
+        //     //         console.log(xhr.responseText);
+        //     //     }
+        //     // }
+        //     // xhr.send(JSON.stringify({ username, password }));
+
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.open("get", "/xml");
+
+        //     xhr.onload = function () {
+        //         if (xhr.status == 200) {
+        //             // console.log(xhr.responseXML);
+        //             console.log(xhr.responseXML.querySelector("userinfo username").innerHTML)
+        //             console.log(xhr.responseXML.querySelector("userinfo password").innerHTML)
+        //         }
+        //     }
+        //     xhr.send();
+        // }
+
+        let btnTimeout = document.querySelector(".btnTimeout");
+        let xhr;
+        btnTimeout.onclick = function () {
+            xhr = new XMLHttpRequest();
+            xhr.open("get", "/ajaxtimeout");
+            xhr.timeout = 2000;
+
+            xhr.onload = function () {
+                console.log(xhr.responseText)
+            }
+            xhr.send();
+        }
+
+        let btnAbort = document.querySelector(".btnAbort");
+        btnAbort.onclick = function () {
+            xhr.abort();
+        }
+
+
+    </script>
+</body>
+
+</html>
