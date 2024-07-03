@@ -138,23 +138,20 @@
         <!-- <script src="/index0.js"></script> -->
     </div>
 
+    <script src="/axios.min.js"></script>
     <script>
         let newsTitleList = document.querySelector(".news-list");
         let pagination = document.querySelector(".pagination");
         let news;
-        function syncDataFormServer(path,id) {
-            return new Promise((resolve, reject) => {
-                let xhr = new XMLHttpRequest();
-                xhr.open("get", `${path}?id=${id}`);
-                xhr.send();
-                xhr.onload = function () {
-                    if (xhr.status >= 200 && xhr.status < 300) {
-                        news = JSON.parse(xhr.responseText);
-                        // console.log(news)
-                        resolve();
-                    }
-                }
-            })
+        async function syncDataFormServer(path, id) {
+            let { data } = await axios({
+                url: path,
+                method: "get",
+                params: { id }
+            });
+            // console.log(id);
+            news = data;
+            render();
         }
         function render() {
             newsTitleList.innerHTML = '';
@@ -186,49 +183,20 @@
             pagination.innerHTML = str;
             pagination.onclick = function (e) {
                 if (e.target.className == 'page') {
-                    (async function () {
-                        try {
-                            await syncDataFormServer("/newsData",e.target.innerText);
-                            await render();
-                        } catch (err) {
-                            console.log(err);
-                        }
-                    })();
+                    syncDataFormServer("/newsData", e.target.innerText)
                 } else if (e.target.className == 'prev') {
                     if (news.index > 1) {
-                        (async function () {
-                            try {
-                                await syncDataFormServer("/newsData",news.index - 1);
-                                await render();
-                            } catch (err) {
-                                console.log(err);
-                            }
-                        })();
+                        syncDataFormServer("/newsData", news.index - 1);
                     }
 
                 } else if (e.target.className == 'next') {
                     if (news.index < news.pages) {
-                        (async function () {
-                            try {
-                                await syncDataFormServer("/newsData",news.index + 1);
-                                await render();
-                            } catch (err) {
-                                console.log(err);
-                            }
-                        })();
+                        syncDataFormServer("/newsData", news.index + 1);
                     }
                 }
             }
         }
-        (async function () {
-            try {
-                await syncDataFormServer("/newsData",1);
-                await render();
-            } catch (err) {
-                console.log(err);
-            }
-        })();
-
+        syncDataFormServer("/newsData", 1);
     </script>
 </body>
 

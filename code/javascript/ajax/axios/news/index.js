@@ -22,6 +22,7 @@ app.get("/detail", (req, res) => {
 app.get("/newsData", (req, res) => {
     let { id } = req.query;
     id = parseInt(id);
+    // console.log(req.query)
     res.json(page(news, 5, id))
 })
 

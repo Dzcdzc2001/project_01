@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    username: <input type="text" id="username"><br>
+    avatar: <input type="file" id="avatar"><br>
+    <input type="submit" name="" id="submit">
+    <div>
+        <ul>
+            <!-- <img src="" alt=""> -->
+        </ul>
+    </div>
+
+    <script>
+
+        let submit = document.querySelector("#submit");
+        let xhr0 = new XMLHttpRequest();
+            xhr0.open("get", "/getuser");
+            xhr0.send();
+            xhr0.onload = function () {
+                if (xhr0.status === 200) {
+                    let ulEle = document.querySelector("ul");
+                    ulEle.innerHTML = '';
+                    JSON.parse(xhr0.responseText).forEach(item => {
+                        let liEle = document.createElement("li");
+                        liEle.innerHTML = `<span>username: ${item.username}</span> avatar: <img src='${item.avatar}'>`;
+                        ulEle.appendChild(liEle);
+                    })
+                }
+            }
+        
+
+        submit.onclick = function () {
+            let username = document.querySelector("#username").value;
+            let avatar = document.querySelector("#avatar").files[0];
+
+            let form = new FormData();
+            form.append("username", username);
+            form.append("avatar", avatar);
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("post", "/adduser");
+            xhr.send(form);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    let ulEle = document.querySelector("ul");
+                    ulEle.innerHTML = '';
+                    JSON.parse(xhr.responseText).forEach(item => {
+                        let liEle = document.createElement("li");
+                        liEle.innerHTML = `<span>username: ${item.username}</span> avatar: <img src='${item.avatar}'>`;
+                        ulEle.appendChild(liEle);
+                    })
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

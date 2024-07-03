@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //回调封装
+        // function ajax(config) {
+        //     let { reqType = "get", url = "/", data = {}, cb = function () { } } = config;
+        //     let xhr = new XMLHttpRequest();
+        //     if (reqType == "get") {
+        //         let reqArg = `?${Object.keys(data).map(item => item + "=" + data[item]).join("&")}`;
+        //         xhr.open(reqType, url + reqArg);
+        //         xhr.send();
+        //     } else if (reqType == "post") {
+        //         xhr.open(reqType, url);
+        //         xhr.setRequestHeader("Content-Type", "application/json");
+        //         xhr.send(JSON.stringify(data));
+        //     }
+        //     xhr.onload = function () {
+        //         cb && cb(xhr.responseText);
+        //     }
+        // }
+
+        //promise封装
+        function ajax(config) {
+            return new Promise((resolve, reject) => {
+                let { reqType = "get", url = "/", data = {}, contentType = "application/json", cb = function () { } } = config;
+                let xhr = new XMLHttpRequest();
+                if (reqType == "get") {
+                    let reqArg = `?${Object.keys(data).map(item => item + "=" + data[item]).join("&")}`;
+                    xhr.open(reqType, url + reqArg);
+                    xhr.send();
+                } else if (reqType == "post") {
+                    xhr.open(reqType, url);
+                    xhr.setRequestHeader("Content-Type", contentType);
+                    if (data.constructor === FormData) {
+                        send(data);
+                    } else {
+                        if (contentType == "application/json") {
+                            xhr.send(JSON.stringify(data));
+                        } else if (contentType == "application/x-www-form-urlencoded") {
+                            xhr.send(Object.keys(data).map(item => item + "=" + data[item]).join("&"));
+                        }
+                    }
+                }
+                xhr.onload = function () {
+                    cb && cb(xhr.responseText);
+                    resolve(JSON.parse(xhr.responseText));
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>

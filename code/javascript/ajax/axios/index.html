@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="axios.min.js"></script>
+    <script>
+        axios.defaults.baseURL = "http://localhost:8989";
+        axios.defaults.timeout = 2000;
+        (async function () {
+            //get
+            console.log("get", (await axios.get("/user", { params: { a: 1, b: 2 } })).data);
+            //delete
+            console.log("delete", (await axios.delete("/user", { params: { a: 1, b: 2 } })).data);
+            //head
+            console.log("head", (await axios.head("/user")).data);
+            //post
+            console.log("post", (await axios.post("/user", { a: 1, b: 2 })).data);
+            //put
+            console.log("put", (await axios.post("/user", { a: 1, b: 2 })).data);
+            //patch
+            console.log("patch", (await axios.post("/user", { a: 1, b: 2 })).data);
+        })();
+
+        //默认配置：方便统一配置
+        // axios.defaults.baseURL = "http://localhost:8989";
+        // axios.defaults.timeout = 2000;
+        //axios实例化: 方便扩展
+        // let instence = axios.create({
+        //     baseURL: "http://localhost:8989",
+        //     timeout: 2000
+        // })
+
+        //拦截器
+        //请求拦截器 倒序执行
+        // axios.interceptors.request.use(config => { return config }, err => { return Promise.reject(err) });
+        //响应拦截器 顺序执行
+        // axios.interceptors.response.use(config => { return config }, err => { return Promise.reject(err) });
+
+    </script>
+</body>
+
+</html>
